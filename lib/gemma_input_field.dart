@@ -5,6 +5,7 @@ import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
 import 'package:aguas_da_borborema/chat_message.dart';
 import 'package:aguas_da_borborema/services/gemma_service.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class GemmaInputField extends StatefulWidget {
   const GemmaInputField({
@@ -28,16 +29,36 @@ class GemmaInputFieldState extends State<GemmaInputField> {
   GemmaLocalService? _gemma;
   StreamSubscription<String?>? _subscription;
   var _message = const Message(text: '');
+  String? planoContingencia;
 
   @override
   void initState() {
     super.initState();
-    _gemma = GemmaLocalService(widget.chat!);
-    _processMessages();
+    _loadPlano().then((_) {
+      _gemma = GemmaLocalService(widget.chat!);
+      _processMessages();
+    });
+  }
+
+  Future<void> _loadPlano() async {
+    planoContingencia = await rootBundle.loadString('assets/PlanodeContingencia-CampinaGrande2023.txt');
   }
 
   void _processMessages() {
-    _subscription = _gemma?.processMessageAsync(widget.messages.last).listen(
+    final originalMessage = widget.messages.last;
+
+    final messageWithContext = Message(
+          isUser: originalMessage.isUser,
+          text: '''
+            Abaixo está o plano de contigência da cidade de Campina Grande. O seu objetivo é auxiliar
+            o usuário de acordo com o plano da cidade:
+            $planoContingencia
+
+            Pergunta:
+            ${originalMessage.text}
+            ''',
+      );
+    _subscription = _gemma?.processMessageAsync(messageWithContext).listen(
       (String token) {
         if (!mounted) return;
         setState(() {
