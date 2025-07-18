@@ -2,50 +2,50 @@ import 'package:flutter_gemma/core/model.dart';
 import 'package:flutter_gemma/pigeon.g.dart';
 
 enum Model {
-  gemma3GpuLocalAsset(
-    // model file should be pre-downloaded and placed in the assets folder
-    url: 'assets/gemma3-1b-it-int4.task',
-    filename: 'gemma3-1b-it-int4.task',
-    displayName: 'Gemma3 1B IT (GPU / Local)',
-    licenseUrl: '',
-    needsAuth: false,
-    localModel: true,
-    preferredBackend: PreferredBackend.gpu,
-    modelType: ModelType.gemmaIt,
-    temperature: 0.1,
-    topK: 40,
-    topP: 0.95,
-  ),
+  // gemma3GpuLocalAsset(
+  //   // model file should be pre-downloaded and placed in the assets folder
+  //   url: 'assets/gemma3-1b-it-int4.task',
+  //   filename: 'gemma3-1b-it-int4.task',
+  //   displayName: 'Gemma3 1B IT (GPU / Local)',
+  //   licenseUrl: '',
+  //   needsAuth: false,
+  //   localModel: true,
+  //   preferredBackend: PreferredBackend.gpu,
+  //   modelType: ModelType.gemmaIt,
+  //   temperature: 0.1,
+  //   topK: 40,
+  //   topP: 0.95,
+  // ),
 
-  gemma3nLocalAsset(
-    // model file should be pre-downloaded and placed in the assets folder
-    url: 'assets/gemma-3n-E2B-it-int4.task',
-    filename: 'gemma-3n-E2B-it-int4.task',
-    displayName: 'Gemma 3 Nano E2B IT Multimodal (Local Asset) ',
-    licenseUrl: '',
-    needsAuth: false,
-    localModel: true,
-    preferredBackend: PreferredBackend.gpu,
-    modelType: ModelType.gemmaIt,
-    temperature: 0.1,
-    topK: 5,
-    topP: 0.95,
-  ),
+  // gemma3nLocalAsset(
+  //   // model file should be pre-downloaded and placed in the assets folder
+  //   url: 'assets/gemma-3n-E2B-it-int4.task',
+  //   filename: 'gemma-3n-E2B-it-int4.task',
+  //   displayName: 'Gemma 3 Nano E2B IT Multimodal (Local Asset) ',
+  //   licenseUrl: '',
+  //   needsAuth: false,
+  //   localModel: true,
+  //   preferredBackend: PreferredBackend.gpu,
+  //   modelType: ModelType.gemmaIt,
+  //   temperature: 0.1,
+  //   topK: 5,
+  //   topP: 0.95,
+  // ),
 
-  gemma3nE4BLocalAsset(
-    // model file should be pre-downloaded and placed in the assets folder
-    url: '/sdcard/Android/data/dev.flutterberlin.aguas_da_borborema/files/gemma-3n-E4B-it-int4.bin',
-    filename: 'gemma-3n-E4B-it-int4.bin',
-    displayName: 'Gemma 4 Nano E4B IT Multimodal (Local Asset) ',
-    licenseUrl: '',
-    needsAuth: false,
-    localModel: true,
-    preferredBackend: PreferredBackend.gpu,
-    modelType: ModelType.gemmaIt,
-    temperature: 0.1,
-    topK: 5,
-    topP: 0.95,
-  ),
+  // gemma3nE4BLocalAsset(
+  //   // model file should be pre-downloaded and placed in the assets folder
+  //   url: '/sdcard/Android/data/dev.agents4good.aguas_da_borborema/files/gemma-3n-E4B-it-int4.bin',
+  //   filename: 'gemma-3n-E4B-it-int4.bin',
+  //   displayName: 'Gemma 4 Nano E4B IT Multimodal (Local Asset) ',
+  //   licenseUrl: '',
+  //   needsAuth: false,
+  //   localModel: true,
+  //   preferredBackend: PreferredBackend.gpu,
+  //   modelType: ModelType.gemmaIt,
+  //   temperature: 0.1,
+  //   topK: 5,
+  //   topP: 0.95,
+  // ),
 
 
   deepseek(

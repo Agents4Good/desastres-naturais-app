@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:aguas_da_borborema/chat_input_field.dart';
-import 'package:aguas_da_borborema/chat_message.dart';
-import 'package:aguas_da_borborema/gemma_input_field.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_input_field.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_message.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/gemma_input_field.dart';
 
 class ChatListWidget extends StatelessWidget {
   const ChatListWidget({

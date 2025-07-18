@@ -1,5 +1,5 @@
 import 'package:pigeon/pigeon.dart';
-// Command to generate pigeon files: dart run pigeon --input pigeon.dart
+// Command to generate pigeon files: dart run pigeon --input lib/src/utils/pigeon.dart
 
 enum PreferredBackend {
   unknown,
@@ -12,9 +12,9 @@ enum PreferredBackend {
 }
 
 @ConfigurePigeon(PigeonOptions(
-  dartOut: 'lib/pigeon.g.dart',
+  dartOut: 'lib/src/utils/pigeon.g.dart',
   kotlinOut: 'android/src/main/kotlin/dev/flutterberlin/flutter_gemma/PigeonInterface.g.kt',
-  kotlinOptions: KotlinOptions(package: 'dev.flutterberlin.flutter_gemma'),
+  kotlinOptions: KotlinOptions(package: 'dev.agents4good.aguas_da_borborema'),
   swiftOut: 'ios/Classes/PigeonInterface.g.swift',
   swiftOptions: SwiftOptions(),
   dartPackageName: 'flutter_gemma',
@@ -27,7 +27,6 @@ abstract class PlatformService {
     required String modelPath,
     required List<int>? loraRanks,
     PreferredBackend? preferredBackend,
-    // Добавляем поддержку изображений
     int? maxNumImages,
   });
 
@@ -41,7 +40,6 @@ abstract class PlatformService {
     required int topK,
     double? topP,
     String? loraPath,
-    // Добавляем опцию для включения vision модальности
     bool? enableVisionModality,
   });
 
@@ -54,7 +52,6 @@ abstract class PlatformService {
   @async
   void addQueryChunk(String prompt);
 
-  // Добавляем метод для добавления изображения
   @async
   void addImage(Uint8List imageBytes);
 

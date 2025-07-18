@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/pigeon.g.dart';
-import 'package:aguas_da_borborema/chat_screen.dart';
-import 'package:aguas_da_borborema/model_download_screen.dart';
-import 'package:aguas_da_borborema/models/model.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_screen.dart';
+import 'package:aguas_da_borborema/src/features/model_management/presentation/download/model_download_screen.dart';
+import 'package:aguas_da_borborema/src/constants/available_models.dart';
 import 'dart:io' as io;
 
 class ModelSelectionScreen extends StatelessWidget {

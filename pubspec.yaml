@@ -6,6 +6,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
+  # sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,6 +36,19 @@ dependencies:
   # Dependencies for working with images
   image_picker: ^1.0.4 # For selecting images on mobile devices
 
+  # Riverpod
+  flutter_riverpod: ^3.0.0-dev.16
+  riverpod_annotation: ^3.0.0-dev.16
+  # riverpod_sqflite: ^0.1.2
+  encrypt_shared_preferences: ^0.9.9
+
+  rxdart: ^0.28.0
+
+  # Go Router for routing
+  go_router: ^16.0.0
+
+  pigeon: ^26.0.0
+
 dev_dependencies:
   integration_test:
     sdk: flutter
@@ -46,6 +61,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner: ^2.5.4
+  custom_lint: ^0.7.5
+  riverpod_generator: ^3.0.0-dev.16
+  riverpod_lint: ^3.0.0-dev.16
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:aguas_da_borborema/chat_message.dart';
-import 'package:aguas_da_borborema/services/gemma_service.dart';
+import 'package:aguas_da_borborema/src/services/gemma_service.dart';
 
 class GemmaInputField extends StatefulWidget {
   const GemmaInputField({

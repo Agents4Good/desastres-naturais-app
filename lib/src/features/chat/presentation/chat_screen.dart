@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:aguas_da_borborema/chat_widget.dart';
-import 'package:aguas_da_borborema/loading_widget.dart';
-import 'package:aguas_da_borborema/models/model.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_widget.dart';
+import 'package:aguas_da_borborema/src/common_widgets/loading_widget.dart';
+import 'package:aguas_da_borborema/src/constants/available_models.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:aguas_da_borborema/model_selection_screen.dart';
+import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, this.model = Model.gemma3Gpu_1B});

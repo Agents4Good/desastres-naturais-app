@@ -1,4 +1,4 @@
-package dev.flutterberlin.flutter_gemma
+package dev.agents4good.aguas_da_borborema
 
 import android.content.Context
 

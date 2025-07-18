@@ -1,10 +1,9 @@
+import 'package:aguas_da_borborema/src/constants/available_models.dart';
+import 'package:aguas_da_borborema/src/features/chat/presentation/chat_screen.dart';
+import 'package:aguas_da_borborema/src/services/model_download_service.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/chat_screen.dart';
-import 'package:aguas_da_borborema/services/model_download_service.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'models/model.dart';
 
 class ModelDownloadScreen extends StatefulWidget {
   final Model model;
