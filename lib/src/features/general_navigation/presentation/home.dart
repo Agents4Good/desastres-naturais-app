@@ -44,6 +44,12 @@ class _HomeScreen extends State<HomeScreen> {
             color: Colors.blue,
             onTap: () => context.goNamed(AppRoute.forecast.name)),
         _NavigationCard(
+            title: 'Contatos',
+            subtitle: 'Acesse sua lista de contatos.',
+            icon: Icons.people,
+            color: Colors.blue,
+            onTap: () => context.goNamed(AppRoute.contacts.name)),
+        _NavigationCard(
             title: 'Configurações',
             subtitle:
                 'Acesse as configurações de modelos, casa e contatos salvos.',
@@ -52,40 +58,44 @@ class _HomeScreen extends State<HomeScreen> {
             onTap: () => context.goNamed(AppRoute.settings.name)),
       ],
     );
-    
+
     var candidate2 = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GridView.count(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          // padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: [
-          _SmallNavigationCard(
-              title: 'Chat',
-              icon: Icons.chat,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.chat.name)),
-          _SmallNavigationCard(
-              title: 'Mapa',
-              icon: Icons.map_outlined,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.map.name)),
-          _SmallNavigationCard(
-              title: 'Previsões',
-              icon: Icons.cloudy_snowing,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.forecast.name)),
-          _SmallNavigationCard(
-              title: 'Configurações',
-              icon: Icons.settings,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.settings.name)),
-          ]
-        )
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            // padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: [
+              _SmallNavigationCard(
+                  title: 'Chat',
+                  icon: Icons.chat,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.chat.name)),
+              _SmallNavigationCard(
+                  title: 'Mapa',
+                  icon: Icons.map_outlined,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.map.name)),
+              _SmallNavigationCard(
+                  title: 'Previsões',
+                  icon: Icons.cloudy_snowing,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.forecast.name)),
+              _SmallNavigationCard(
+                  title: 'Configurações',
+                  icon: Icons.settings,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.settings.name)),
+              _SmallNavigationCard(
+                  title: 'Contatos',
+                  icon: Icons.settings,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.contacts.name)),
+            ])
       ],
     );
 
@@ -95,7 +105,9 @@ class _HomeScreen extends State<HomeScreen> {
           padding: const EdgeInsets.all(20.0),
           child: ListView(children: [
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              ElevatedButton(onPressed: alternateOption, child: const Text("Alternar visualização")),
+              ElevatedButton(
+                  onPressed: alternateOption,
+                  child: const Text("Alternar visualização")),
               const Icon(
                 Icons.chat_bubble_outline,
                 size: 80,
@@ -118,10 +130,8 @@ class _HomeScreen extends State<HomeScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 48),
-              if(option) 
-                candidate1,
-              if(!option)
-                candidate2
+              if (option) candidate1,
+              if (!option) candidate2
             ])
           ])),
     );
@@ -161,23 +171,25 @@ class _SmallNavigationCard extends StatelessWidget {
                 ),
                 child: Icon(icon, color: Colors.blue, size: 24),
               ),
-              const SizedBox(height: 16.0,),
+              const SizedBox(
+                height: 16.0,
+              ),
               Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(width: 16),
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(width: 16),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-              
+                  ),
+                ],
+              ),
+
               // Expanded(
-              //   child: 
+              //   child:
               // ),
               // const Icon(
               //   Icons.arrow_forward_ios,
