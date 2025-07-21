@@ -1,10 +1,12 @@
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/app_layout.dart';
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/home.dart';
+import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
+import 'package:aguas_da_borborema/src/utils/class_prevision.dart';
 
 part 'app_router.g.dart';
 
@@ -76,7 +78,9 @@ GoRouter goRouter(Ref ref) {
                 path: 'map',
                 name: AppRoute.map.name,
                 builder: (context, state) {
-                  return NotImplementedScreen();
+                  return const MapScreen( previsoes: [
+                    // Definir pontos de previsão de alagamento
+                  ],);
                 },
               ),
               GoRoute(
