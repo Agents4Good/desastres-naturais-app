@@ -30,3 +30,9 @@ linter:
 analyzer:
   plugins:
     - custom_lint
+
+  # Make the analyzer strictier when evaluating dynamic types to actual types
+  # This is useful to better find json parse bugs
+  language:
+    strict-raw-types: true
+    strict-casts: true
