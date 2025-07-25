@@ -19,9 +19,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
   equatable: ^2.0.3
   flutter_bloc: ^8.0.1
   flutter_gemma: ^0.9.0
+  flutter_local_notifications: ^19.3.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -50,6 +53,8 @@ dependencies:
   pigeon: ^26.0.0
   sqflite: ^2.4.2
   path: ^1.9.1
+  mongo_dart: ^0.10.5
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   integration_test:
@@ -82,6 +87,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

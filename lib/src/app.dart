@@ -1,7 +1,6 @@
 import 'package:aguas_da_borborema/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 
 class ChatApp extends ConsumerWidget {
   const ChatApp({super.key});
