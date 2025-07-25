@@ -6,20 +6,9 @@ import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/src/utils/class_prevision.dart';
+import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
 
 part 'app_router.g.dart';
-
-// extension TagGerman on TagVisibility {
-//   String get german {
-//     switch(this){
-//       case TagVisibility.public: return "Für alle sichtbar";
-//       case TagVisibility.shared: return "Für alle mit demselben Tag sichtbar";
-//       case TagVisibility.private: return "Nur für mich sichtbar";
-//       default: throw Exception("enum has more cases");
-//     }
-//   }
-// }
 
 class UnpackedRouteBase {
   const UnpackedRouteBase({required this.icon, required this.text});
@@ -78,9 +67,7 @@ GoRouter goRouter(Ref ref) {
                 path: 'map',
                 name: AppRoute.map.name,
                 builder: (context, state) {
-                  return const MapScreen( previsoes: [
-                    // Definir pontos de previsão de alagamento
-                  ],);
+                  return const MapScreen();
                 },
               ),
               GoRoute(

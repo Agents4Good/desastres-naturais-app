@@ -1,24 +1,33 @@
+import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
+import 'package:aguas_da_borborema/src/features/forecast/presentation/forecast_controller.dart';
+import 'package:aguas_da_borborema/src/features/forecast/presentation/forecast_next_day_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:aguas_da_borborema/src/utils/class_prevision.dart';
+import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
 
 
-class MapScreen extends StatelessWidget {
-
-  final List<PrevisaoAlagamento> previsoes;
-
+class MapScreen extends ConsumerWidget {
   const MapScreen({
     super.key,
-    required this.previsoes,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(forecastNextDayControllerProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mapa de Previsão'),
         backgroundColor: const Color(0xFF0b2351),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              ref.read(forecastNextDayControllerProvider.notifier).refreshNextDayForecast();
+            },
+          ),
+        ],
       ),
       backgroundColor: const Color(0xFF0b2351),
       body: Center(
@@ -64,18 +73,23 @@ class MapScreen extends StatelessWidget {
                       userAgentPackageName: 'com.exemplo.aguasdaborborema',
                     ),
                     MarkerLayer(
-                      markers: previsoes.map((p) {
-                        return Marker(
-                          point: LatLng(p.latitude, p.longitude),
-                          width: 40,
-                          height: 40,
-                          child: Icon(
-                            Icons.warning_rounded,
-                            color: _corGravidade(p.gravidade),
-                            size: 36,
-                          ),
-                        );
-                      }).toList(),
+                      markers: state.when(data: (previsaoAlagamentoCompleta) {
+                        return previsaoAlagamentoCompleta.previsoes.map((p) {
+                          return Marker(
+                            point: LatLng(p.latitude, p.longitude),
+                            width: 40,
+                            height: 40,
+                            child: Icon(
+                              Icons.warning_rounded,
+                              color: _corGravidade(p.gravidade),
+                              size: 36,
+                            ),
+                          );
+                      }).toList();
+                      }, error: (error, stack) {
+                        print('Erro ao carregar previsões: $error');
+                        return <Marker>[];
+                      }, loading: () => <Marker>[])
                     ),
                   ],
                 ),
@@ -109,16 +123,14 @@ class MapScreen extends StatelessWidget {
     );
   }
 
-  Color _corGravidade(String gravidade) {
-  switch (gravidade.toLowerCase()) {
-    case 'baixa':
+  Color _corGravidade(GravidadeAlagamento gravidade) {
+  switch (gravidade) {
+    case GravidadeAlagamento.baixa:
       return Colors.green;
-    case 'media':
+    case GravidadeAlagamento.media:
       return Colors.amber;
-    case 'alta':
+    case GravidadeAlagamento.alta:
       return Colors.red;
-    default:
-      return Colors.grey;
   }
   }
 }
