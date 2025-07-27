@@ -4,6 +4,7 @@ import 'package:aguas_da_borborema/src/routing/contacts_screen.dart';
 import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
+import 'package:aguas_da_borborema/src/routing/notifications_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
@@ -70,28 +71,28 @@ GoRouter goRouter(Ref ref) {
             path: 'map',
             name: AppRoute.map.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const MapScreen();
             },
           ),
           GoRoute(
             path: 'forecast',
             name: AppRoute.forecast.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotificacoesScreen();
             },
           ),
           GoRoute(
             path: 'settings',
             name: AppRoute.settings.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
             path: 'contacts',
             name: AppRoute.contacts.name,
             builder: (context, state) {
-              return ContactsScreen();
+              return const ContactsScreen();
             },
           ),
 
