@@ -51,25 +51,25 @@ class AppLayout extends ConsumerWidget {
     
     // List<UnpackedRouteBase> unpackedRoutes = unpackRouteBase(routes);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Águas da Borborema'),
-        backgroundColor: const Color(0xFF0b2351),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Águas da Borborema'),
+      //   backgroundColor: const Color(0xFF0b2351),
+      // ),
       body: child,
-      drawer: Drawer(
-        child: ListView(
-          children: unpackRoutes(routes).map((innerRoute) {
-            return ListTile(
-              leading: innerRoute.icon,
-              title: Text(innerRoute.text),
-              onTap: () {
-                Navigator.of(context).pop();
-                context.go(innerRoute.path);
-              }
-            );
-          } ).toList(),
-        )
-      )
+      // drawer: Drawer(
+      //   child: ListView(
+      //     children: unpackRoutes(routes).map((innerRoute) {
+      //       return ListTile(
+      //         leading: innerRoute.icon,
+      //         title: Text(innerRoute.text),
+      //         onTap: () {
+      //           Navigator.of(context).pop();
+      //           context.go(innerRoute.path);
+      //         }
+      //       );
+      //     } ).toList(),
+      //   )
+      // )
       //   child: ListView(
       //     children: const [
       //       ListTile(title: Text("Element 1")),

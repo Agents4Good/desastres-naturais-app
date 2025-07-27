@@ -23,7 +23,7 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
     final String mongodbDBName = dotenv.env['MONGODB_DB_NAME'] ?? 'n8n';
     final String mongodbCollection = dotenv.env['MONGODB_PREVISOES_COLLECTION'] ?? 'previsoes';
 
-    final String connectionString = "mongodb://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/n8n?authSource=admin&ssl=false";
+    final String connectionString = "mongodb://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/$mongodbDBName?authSource=admin&ssl=false";
     Db db = await Db.create(connectionString);
     await db.open();
 
