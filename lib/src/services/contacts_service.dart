@@ -6,26 +6,39 @@ const String tableContact = 'contact';
 const String columnId = '_id';
 const String columnName = 'name';
 const String columnAddress = 'address';
+const String columnLatitude = 'latitude';
+const String columnLongitude = 'longitude';
 
 class Contact {
   int? id;
   String name;
   String address;
+  double latitude;
+  double longitude;
 
   Map<String, Object?> toMap() {
-    var map = <String, Object?>{columnName: name, columnAddress: address};
+    var map = <String, Object?>{columnName: name, columnAddress: address, columnLatitude: latitude, columnLongitude: longitude};
     if (id != null) {
       map[columnId] = id;
     }
     return map;
   }
 
-  Contact({this.id, required this.name, required this.address});
+  Contact({this.id, required this.name, required this.address, required this.latitude, required this.longitude});
 
   Contact.fromMap(Map<dynamic, dynamic> map)
       : id = int.parse(map[columnId].toString()),
         name = map[columnName].toString(),
-        address = map[columnAddress].toString();
+        address = map[columnAddress].toString(),
+        latitude = double.parse(map[columnLatitude].toString()),
+        longitude = double.parse(map[columnLongitude].toString());
+
+
+  @override
+  String toString() {
+    return 'Contact(name: $name, address: $address, latitude: $latitude, longitude: $longitude)';
+  }
+
 }
 
 ContactService contactService = ContactService();
@@ -39,11 +52,13 @@ class ContactService {
     db = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       await db.execute('''
-create table $tableContact ( 
-  $columnId integer primary key autoincrement, 
-  $columnName text not null,
-  $columnAddress text not null)
-''');
+        create table $tableContact ( 
+          $columnId integer primary key autoincrement, 
+          $columnName text not null,
+          $columnAddress text not null,
+          $columnLatitude real,
+          $columnLongitude real)
+        ''');
     });
   }
 
@@ -54,7 +69,7 @@ create table $tableContact (
 
   Future<List<Contact>> getContacts() async {
     List<Map> maps = await db
-        .query(tableContact, columns: [columnId, columnAddress, columnName]);
+        .query(tableContact, columns: [columnId, columnAddress, columnName, columnLatitude, columnLongitude]);
     return maps.map((map) => Contact.fromMap(map)).toList();
   }
 

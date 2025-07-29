@@ -55,6 +55,8 @@ dependencies:
   path: ^1.9.1
   mongo_dart: ^0.10.5
   flutter_dotenv: ^5.2.1
+  location_picker_flutter_map: ^1.1.0
+  geolocator: ^14.0.2
 
 dev_dependencies:
   integration_test:
