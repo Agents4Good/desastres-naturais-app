@@ -34,6 +34,10 @@ class _ContactsScreenState extends State<ContactsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contatos Salvos'),
+        backgroundColor: const Color(0xFF0b2351),
+      ),
       body: contacts.isEmpty
           ? const Center(child: Text("Adicione um novo contato."))
           : Column(
