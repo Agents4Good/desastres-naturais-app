@@ -4,7 +4,6 @@ import 'package:aguas_da_borborema/src/routing/contacts_screen.dart';
 import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
-import 'package:aguas_da_borborema/src/routing/notifications_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +77,7 @@ GoRouter goRouter(Ref ref) {
             path: 'forecast',
             name: AppRoute.forecast.name,
             builder: (context, state) {
-              return const NotificacoesScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
