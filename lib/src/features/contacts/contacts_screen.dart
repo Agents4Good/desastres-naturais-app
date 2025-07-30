@@ -1,8 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
 import 'package:aguas_da_borborema/src/services/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../services/location_service.dart';
 
 class ContactsScreen extends StatefulWidget {
   const ContactsScreen({super.key});
@@ -186,8 +189,9 @@ class AddContact extends StatefulWidget {
 
 class _AddContactState extends State<AddContact> {
   String name = "";
-  String address = "";
+  Location? location;
   bool loading = false;
+  LocationService locationService = LocationService();
 
   @override
   Widget build(BuildContext context) {
@@ -201,12 +205,27 @@ class _AddContactState extends State<AddContact> {
                 name = value;
               },
             ),
-            TextField(
-              decoration: const InputDecoration(label: Text("Endereço")),
-              onChanged: (value) {
-                address = value;
-              },
-            ),
+            const SizedBox(height: 16),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade500),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: DebouncedSearchBar<Location>(
+                onResultSelected: (result){
+                  location = result;
+                },
+                searchFunction: (query){
+                  return locationService.searchLocation(query);
+                },
+                titleBuilder:(result) {
+                  return Text(result.address);
+                },
+                hintText: "Localização",
+                
+              ),
+              
+            )
           ],
         ),
         actions: [
@@ -220,7 +239,8 @@ class _AddContactState extends State<AddContact> {
                 setState(() {
                   loading = true;
                 });
-                Contact contact = Contact(name: name, address: address);
+                Contact contact = Contact(name: name, address: location!.address, latitude: location!.latitude, longitude: location!.longitude);
+                print(contact);
                 await contactService.insert(contact);
                 setState(() {
                   loading = false;
