@@ -31,7 +31,7 @@ final class ForecastNextDayControllerProvider extends $AsyncNotifierProvider<
 }
 
 String _$forecastNextDayControllerHash() =>
-    r'a5fcee940256e9185ed1467cd85068ee5f1d89d8';
+    r'de3ee9960aae8f98d6046782d5cfea24b62c2eb6';
 
 abstract class _$ForecastNextDayController
     extends $AsyncNotifier<PrevisaoAlagamentoCompleta> {
