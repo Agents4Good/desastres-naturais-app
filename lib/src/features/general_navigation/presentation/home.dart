@@ -86,15 +86,15 @@ class _HomeScreen extends State<HomeScreen> {
                   color: Colors.blue,
                   onTap: () => context.goNamed(AppRoute.forecast.name)),
               _SmallNavigationCard(
+                  title: 'Contatos',
+                  icon: Icons.people,
+                  color: Colors.blue,
+                  onTap: () => context.goNamed(AppRoute.contacts.name)),
+              _SmallNavigationCard(
                   title: 'Configurações',
                   icon: Icons.settings,
                   color: Colors.blue,
                   onTap: () => context.goNamed(AppRoute.settings.name)),
-              _SmallNavigationCard(
-                  title: 'Contatos',
-                  icon: Icons.settings,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.contacts.name)),
             ])
       ],
     );

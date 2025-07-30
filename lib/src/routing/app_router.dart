@@ -71,28 +71,28 @@ GoRouter goRouter(Ref ref) {
             path: 'map',
             name: AppRoute.map.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const MapScreen();
             },
           ),
           GoRoute(
             path: 'forecast',
             name: AppRoute.forecast.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
             path: 'settings',
             name: AppRoute.settings.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
             path: 'contacts',
             name: AppRoute.contacts.name,
             builder: (context, state) {
-              return ContactsScreen();
+              return const ContactsScreen();
             },
           ),
 

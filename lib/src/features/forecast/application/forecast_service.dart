@@ -11,18 +11,18 @@ class ForecastService {
   ForecastService(this.ref);
   final Ref ref;
 
-  Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletas() async {
-    try {
-      return await ref.read(forecastMongoRepositoryProvider).fetchPrevisoesCompletas();
-    } catch (e) {
-      // Handle exceptions, log errors, etc.
-      throw Exception('Failed to fetch flood predictions: $e');
-    }
-  }
+  // Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletas() async {
+  //   try {
+  //     return await ref.read(forecastMongoRepositoryProvider).fetchPrevisoesCompletas();
+  //   } catch (e) {
+  //     // Handle exceptions, log errors, etc.
+  //     throw Exception('Failed to fetch flood predictions: $e');
+  //   }
+  // }
 
-  Future<PrevisaoAlagamentoCompleta> fetchCurrentPrevisaoCompleta(DateTime? desiredDate) async {
+  Future<PrevisaoAlagamentoCompleta> fetchCurrentPrevisaoCompletaUltimosTresDias(DateTime? desiredDate) async {
     try {
-      final previsoesCompletas = ref.read(forecastMongoRepositoryProvider).fetchPrevisoesCompletas();
+      final previsoesCompletas = ref.read(forecastMongoRepositoryProvider).fetchPrevisoesCompletasUltimosTresDias();
       return previsoesCompletas.then((previsoesCompletas) {
         if (previsoesCompletas.isEmpty) {
           throw Exception('No flood predictions available');
@@ -45,6 +45,24 @@ class ForecastService {
       throw Exception('Failed to fetch flood predictions: $e');
     }
   }
+
+
+  Future<List<PrevisaoAlagamentoCompleta>> fetchCurrentPrevisaoCompletaUltimaSemana() async {
+      try {
+        final previsoesCompletas = ref.read(forecastMongoRepositoryProvider).fetchPrevisoesCompletasUltimaSemana();
+        return previsoesCompletas.then((previsoesCompletas) {
+          if (previsoesCompletas.isEmpty) {
+            throw Exception('No flood predictions available');
+          }
+          previsoesCompletas.sort((a, b) => b.dataExecucaoPrevisao.compareTo(a.dataExecucaoPrevisao)); // Sort by date descending
+          
+          return previsoesCompletas;
+        });
+      } catch (e) {
+        // Handle exceptions, log errors, etc.
+        throw Exception('Failed to fetch flood predictions: $e');
+      }
+    }
 }
 
 @Riverpod(keepAlive: true)
