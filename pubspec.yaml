@@ -57,7 +57,11 @@ dependencies:
   flutter_dotenv: ^5.2.1
   location_picker_flutter_map: ^1.1.0
   geolocator: ^14.0.2
-  intl: ^0.20.2
+  intl: any
+  #flutter_localization: ^0.3.3
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.5
 
 dev_dependencies:
   integration_test:
@@ -90,7 +94,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - .env
+   # - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
