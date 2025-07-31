@@ -1,39 +1,96 @@
 {
     "@@locale": "en",
     "appTitle": "Waters of Borborema",
-  
+    
     "navHome": "Home",
     "navChat": "Chat",
     "navMap": "Map",
     "navForecast": "Forecasts",
     "navSettings": "Settings",
     "navContacts": "Contacts",
-  
+    
     "notificationsScreenTitle": "Forecasts",
-  
+    
     "severityHigh": "High Severity",
     "severityMedium": "Medium Severity",
     "severityLow": "Low Severity",
     "noStreetsWithSeverity": "- No streets with {severity}",
-  
+    
     "forecastItemTitle": "Forecast - {date}",
     "executionDate": "Execution Date\n{date}",
     "notificationsError": "Error loading notifications: {error}",
-  
+    
     "error404": "404 - Page not found!",
     "error501": "501 - Not implemented yet!",
-  
+    
     "buttonReturnHome": "Return to Home",
-  
+    
     "notificationChannelName": "Important Notifications",
     "notificationChannelDescription": "This channel is used for important notifications.",
     "notificationTestTitle": "Test Notification",
     "notificationTestBody": "This is a local test notification.",
-  
+    
     "imageSupportEnabled": "Image support enabled",
     "loadingModel": "Loading model",
     "imageSupportInfoTitle": "Model supports images",
     "imageSupportInfoBody": "Use the 📷 button to send images",
-    "errorBannerMessage": "{errorMessage}"
+    "errorBannerMessage": "{errorMessage}",
+    
+    "buttonToggleView": "Toggle view",
+    "@buttonToggleView": { "description": "Text for the button that alternates home layout" },
+    
+    "homeWelcomeTitle": "Welcome to Waters of Borborema",
+    "@homeWelcomeTitle": { "description": "Main welcome title on HomeScreen" },
+    
+    "homeWelcomeSubtitle": "Explore our solution for natural disaster assistance",
+    "@homeWelcomeSubtitle": { "description": "Subtitle under welcome title on HomeScreen" },
+    
+    "homeChatSubtitle": "Browse a range of models running locally on your device!",
+    "@homeChatSubtitle": { "description": "Subtitle for Chat card" },
+    
+    "homeMapSubtitle": "See new forecast updates on the map!",
+    "@homeMapSubtitle": { "description": "Subtitle for Map card" },
+    
+    "homeForecastSubtitle": "Check out the latest forecasts!",
+    "@homeForecastSubtitle": { "description": "Subtitle for Forecasts card" },
+    
+    "homeContactsSubtitle": "Access your contacts list.",
+    "@homeContactsSubtitle": { "description": "Subtitle for Contacts card" },
+    
+    "homeSettingsSubtitle": "Go to model, home & contacts settings.",
+    "@homeSettingsSubtitle": { "description": "Subtitle for Settings card" },
+  
+    "contactsTitle": "Saved Contacts",
+    "@contactsTitle": { "description": "Title of the saved contacts screen" },
+  
+    "contactsEmptyMessage": "Add a new contact.",
+    "@contactsEmptyMessage": { "description": "Message shown when there are no contacts" },
+  
+    "contactsEdit": "Edit",
+    "@contactsEdit": { "description": "Option to edit contact" },
+  
+    "contactsDelete": "Delete",
+    "@contactsDelete": { "description": "Option to delete contact" },
+  
+    "deleteContactConfirmation": "Are you sure you want to delete this contact?",
+    "@deleteContactConfirmation": { "description": "Confirmation message to delete contact" },
+  
+    "buttonCancel": "Cancel",
+    "@buttonCancel": { "description": "Cancel button text in dialogs" },
+  
+    "buttonSave": "Save",
+    "@buttonSave": { "description": "Save button text in dialogs" },
+  
+    "updateContactLabelName": "Name",
+    "@updateContactLabelName": { "description": "Label for name field in update contact dialog" },
+  
+    "updateContactLabelAddress": "Address",
+    "@updateContactLabelAddress": { "description": "Label for address field in update contact dialog" },
+  
+    "addContactLabelName": "Name",
+    "@addContactLabelName": { "description": "Label for name field in add contact dialog" },
+  
+    "addContactHintLocation": "Location",
+    "@addContactHintLocation": { "description": "Hint text for location field in add contact dialog" }
   }
   

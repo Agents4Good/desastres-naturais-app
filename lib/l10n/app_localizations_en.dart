@@ -98,4 +98,61 @@ class AppLocalizationsEn extends AppLocalizations {
   String errorBannerMessage(Object errorMessage) {
     return '$errorMessage';
   }
+
+  @override
+  String get buttonToggleView => 'Toggle view';
+
+  @override
+  String get homeWelcomeTitle => 'Welcome to Waters of Borborema';
+
+  @override
+  String get homeWelcomeSubtitle => 'Explore our solution for natural disaster assistance';
+
+  @override
+  String get homeChatSubtitle => 'Browse a range of models running locally on your device!';
+
+  @override
+  String get homeMapSubtitle => 'See new forecast updates on the map!';
+
+  @override
+  String get homeForecastSubtitle => 'Check out the latest forecasts!';
+
+  @override
+  String get homeContactsSubtitle => 'Access your contacts list.';
+
+  @override
+  String get homeSettingsSubtitle => 'Go to model, home & contacts settings.';
+
+  @override
+  String get contactsTitle => 'Saved Contacts';
+
+  @override
+  String get contactsEmptyMessage => 'Add a new contact.';
+
+  @override
+  String get contactsEdit => 'Edit';
+
+  @override
+  String get contactsDelete => 'Delete';
+
+  @override
+  String get deleteContactConfirmation => 'Are you sure you want to delete this contact?';
+
+  @override
+  String get buttonCancel => 'Cancel';
+
+  @override
+  String get buttonSave => 'Save';
+
+  @override
+  String get updateContactLabelName => 'Name';
+
+  @override
+  String get updateContactLabelAddress => 'Address';
+
+  @override
+  String get addContactLabelName => 'Name';
+
+  @override
+  String get addContactHintLocation => 'Location';
 }

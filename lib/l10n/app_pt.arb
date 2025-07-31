@@ -1,39 +1,96 @@
 {
     "@@locale": "pt",
     "appTitle": "Águas da Borborema",
-  
+    
     "navHome": "Home",
     "navChat": "Chat",
     "navMap": "Mapa",
     "navForecast": "Previsões",
     "navSettings": "Configurações",
     "navContacts": "Contatos",
-  
+    
     "notificationsScreenTitle": "Previsões",
-  
+    
     "severityHigh": "Gravidade Alta",
     "severityMedium": "Gravidade Média",
     "severityLow": "Gravidade Baixa",
     "noStreetsWithSeverity": "- Nenhuma rua com {severity}",
-  
+    
     "forecastItemTitle": "Previsão - {date}",
     "executionDate": "Data de execução\n{date}",
     "notificationsError": "Erro ao carregar notificações: {error}",
-  
+    
     "error404": "404 - Página não encontrada!",
     "error501": "501 - Ainda não implementado!",
-  
+    
     "buttonReturnHome": "Voltar a Home",
-  
+    
     "notificationChannelName": "Notificações importantes",
     "notificationChannelDescription": "Este canal é usado para notificações importantes.",
     "notificationTestTitle": "Notificação de Teste",
     "notificationTestBody": "Esta é uma notificação local de teste.",
-  
+    
     "imageSupportEnabled": "Suporte a imagem ativado",
     "loadingModel": "Carregando o modelo",
     "imageSupportInfoTitle": "O modelo suporta imagens",
     "imageSupportInfoBody": "Uso o botão 📷 para enviar imagens",
-    "errorBannerMessage": "{errorMessage}"
+    "errorBannerMessage": "{errorMessage}",
+    
+    "buttonToggleView": "Alternar visualização",
+    "@buttonToggleView": { "description": "Texto do botão para alternar layout da home" },
+    
+    "homeWelcomeTitle": "Bem-vindo ao Águas da Borborema",
+    "@homeWelcomeTitle": { "description": "Título de boas-vindas na HomeScreen" },
+    
+    "homeWelcomeSubtitle": "Explore nossa solução de assistência à eventos de catástrofes naturais",
+    "@homeWelcomeSubtitle": { "description": "Subtítulo abaixo do título da HomeScreen" },
+    
+    "homeChatSubtitle": "Navegue por uma gama de modelos que rodam localmente no seu dispositivo!",
+    "@homeChatSubtitle": { "description": "Subtítulo do card de Chat" },
+    
+    "homeMapSubtitle": "Visualize no mapa as novas atualizações de previsões!",
+    "@homeMapSubtitle": { "description": "Subtítulo do card de Mapa" },
+    
+    "homeForecastSubtitle": "Cheque as últimas previsões!",
+    "@homeForecastSubtitle": { "description": "Subtítulo do card de Previsões" },
+    
+    "homeContactsSubtitle": "Acesse sua lista de contatos.",
+    "@homeContactsSubtitle": { "description": "Subtítulo do card de Contatos" },
+    
+    "homeSettingsSubtitle": "Acesse as configurações de modelos, casa e contatos salvos.",
+    "@homeSettingsSubtitle": { "description": "Subtítulo do card de Configurações" },
+  
+    "contactsTitle": "Contatos Salvos",
+    "@contactsTitle": { "description": "Título da tela de contatos salvos" },
+  
+    "contactsEmptyMessage": "Adicione um novo contato.",
+    "@contactsEmptyMessage": { "description": "Mensagem exibida quando não há contatos" },
+  
+    "contactsEdit": "Editar",
+    "@contactsEdit": { "description": "Opção de editar contato" },
+  
+    "contactsDelete": "Excluir",
+    "@contactsDelete": { "description": "Opção de excluir contato" },
+  
+    "deleteContactConfirmation": "Você tem certeza de que deseja excluir este contato?",
+    "@deleteContactConfirmation": { "description": "Mensagem de confirmação para excluir contato" },
+  
+    "buttonCancel": "Cancelar",
+    "@buttonCancel": { "description": "Texto do botão cancelar em diálogos" },
+  
+    "buttonSave": "Salvar",
+    "@buttonSave": { "description": "Texto do botão salvar em diálogos" },
+  
+    "updateContactLabelName": "Nome",
+    "@updateContactLabelName": { "description": "Label do campo nome no diálogo de atualização do contato" },
+  
+    "updateContactLabelAddress": "Endereço",
+    "@updateContactLabelAddress": { "description": "Label do campo endereço no diálogo de atualização do contato" },
+  
+    "addContactLabelName": "Nome",
+    "@addContactLabelName": { "description": "Label do campo nome no diálogo de adicionar contato" },
+  
+    "addContactHintLocation": "Localização",
+    "@addContactHintLocation": { "description": "Hint do campo localização no diálogo de adicionar contato" }
   }
   

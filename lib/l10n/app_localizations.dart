@@ -256,6 +256,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{errorMessage}'**
   String errorBannerMessage(Object errorMessage);
+
+  /// Text for the button that alternates home layout
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle view'**
+  String get buttonToggleView;
+
+  /// Main welcome title on HomeScreen
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Waters of Borborema'**
+  String get homeWelcomeTitle;
+
+  /// Subtitle under welcome title on HomeScreen
+  ///
+  /// In en, this message translates to:
+  /// **'Explore our solution for natural disaster assistance'**
+  String get homeWelcomeSubtitle;
+
+  /// Subtitle for Chat card
+  ///
+  /// In en, this message translates to:
+  /// **'Browse a range of models running locally on your device!'**
+  String get homeChatSubtitle;
+
+  /// Subtitle for Map card
+  ///
+  /// In en, this message translates to:
+  /// **'See new forecast updates on the map!'**
+  String get homeMapSubtitle;
+
+  /// Subtitle for Forecasts card
+  ///
+  /// In en, this message translates to:
+  /// **'Check out the latest forecasts!'**
+  String get homeForecastSubtitle;
+
+  /// Subtitle for Contacts card
+  ///
+  /// In en, this message translates to:
+  /// **'Access your contacts list.'**
+  String get homeContactsSubtitle;
+
+  /// Subtitle for Settings card
+  ///
+  /// In en, this message translates to:
+  /// **'Go to model, home & contacts settings.'**
+  String get homeSettingsSubtitle;
+
+  /// Title of the saved contacts screen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Contacts'**
+  String get contactsTitle;
+
+  /// Message shown when there are no contacts
+  ///
+  /// In en, this message translates to:
+  /// **'Add a new contact.'**
+  String get contactsEmptyMessage;
+
+  /// Option to edit contact
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get contactsEdit;
+
+  /// Option to delete contact
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get contactsDelete;
+
+  /// Confirmation message to delete contact
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this contact?'**
+  String get deleteContactConfirmation;
+
+  /// Cancel button text in dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get buttonCancel;
+
+  /// Save button text in dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get buttonSave;
+
+  /// Label for name field in update contact dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get updateContactLabelName;
+
+  /// Label for address field in update contact dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get updateContactLabelAddress;
+
+  /// Label for name field in add contact dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get addContactLabelName;
+
+  /// Hint text for location field in add contact dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get addContactHintLocation;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

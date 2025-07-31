@@ -98,4 +98,61 @@ class AppLocalizationsPt extends AppLocalizations {
   String errorBannerMessage(Object errorMessage) {
     return '$errorMessage';
   }
+
+  @override
+  String get buttonToggleView => 'Alternar visualização';
+
+  @override
+  String get homeWelcomeTitle => 'Bem-vindo ao Águas da Borborema';
+
+  @override
+  String get homeWelcomeSubtitle => 'Explore nossa solução de assistência à eventos de catástrofes naturais';
+
+  @override
+  String get homeChatSubtitle => 'Navegue por uma gama de modelos que rodam localmente no seu dispositivo!';
+
+  @override
+  String get homeMapSubtitle => 'Visualize no mapa as novas atualizações de previsões!';
+
+  @override
+  String get homeForecastSubtitle => 'Cheque as últimas previsões!';
+
+  @override
+  String get homeContactsSubtitle => 'Acesse sua lista de contatos.';
+
+  @override
+  String get homeSettingsSubtitle => 'Acesse as configurações de modelos, casa e contatos salvos.';
+
+  @override
+  String get contactsTitle => 'Contatos Salvos';
+
+  @override
+  String get contactsEmptyMessage => 'Adicione um novo contato.';
+
+  @override
+  String get contactsEdit => 'Editar';
+
+  @override
+  String get contactsDelete => 'Excluir';
+
+  @override
+  String get deleteContactConfirmation => 'Você tem certeza de que deseja excluir este contato?';
+
+  @override
+  String get buttonCancel => 'Cancelar';
+
+  @override
+  String get buttonSave => 'Salvar';
+
+  @override
+  String get updateContactLabelName => 'Nome';
+
+  @override
+  String get updateContactLabelAddress => 'Endereço';
+
+  @override
+  String get addContactLabelName => 'Nome';
+
+  @override
+  String get addContactHintLocation => 'Localização';
 }

@@ -1,6 +1,7 @@
-import 'package:aguas_da_borborema/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:aguas_da_borborema/src/routing/app_router.dart';
 import 'package:go_router/go_router.dart';
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,103 +21,117 @@ class _HomeScreen extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Remove
+    final l10n = AppLocalizations.of(context)!;
+
+    // cards grandes
     var candidate1 = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _NavigationCard(
-            title: 'Chat',
-            subtitle:
-                'Navegue por uma gama de modelos que rodam localmente no seu dispostivo!',
-            icon: Icons.chat,
-            color: Colors.blue,
-            onTap: () => context.goNamed(AppRoute.chat.name)),
+          title: l10n.navChat,
+          subtitle: l10n.homeChatSubtitle,
+          icon: Icons.chat,
+          color: Colors.blue,
+          onTap: () => context.goNamed(AppRoute.chat.name),
+        ),
         _NavigationCard(
-            title: 'Mapa',
-            subtitle: 'Visualize no mapa as novas atualizações de previsões!',
-            icon: Icons.map_outlined,
-            color: Colors.blue,
-            onTap: () => context.goNamed(AppRoute.map.name)),
+          title: l10n.navMap,
+          subtitle: l10n.homeMapSubtitle,
+          icon: Icons.map_outlined,
+          color: Colors.blue,
+          onTap: () => context.goNamed(AppRoute.map.name),
+        ),
         _NavigationCard(
-            title: 'Previsões',
-            subtitle: 'Cheque as últimas previsões!',
-            icon: Icons.cloudy_snowing,
-            color: Colors.blue,
-            onTap: () => context.goNamed(AppRoute.forecast.name)),
+          title: l10n.navForecast,
+          subtitle: l10n.homeForecastSubtitle,
+          icon: Icons.cloudy_snowing,
+          color: Colors.blue,
+          onTap: () => context.goNamed(AppRoute.forecast.name),
+        ),
         _NavigationCard(
-            title: 'Contatos',
-            subtitle: 'Acesse sua lista de contatos.',
-            icon: Icons.people,
-            color: Colors.blue,
-            onTap: () => context.goNamed(AppRoute.contacts.name)),
+          title: l10n.navContacts,
+          subtitle: l10n.homeContactsSubtitle,
+          icon: Icons.people,
+          color: Colors.blue,
+          onTap: () => context.goNamed(AppRoute.contacts.name),
+        ),
         _NavigationCard(
-            title: 'Configurações',
-            subtitle:
-                'Acesse as configurações de modelos, casa e contatos salvos.',
-            icon: Icons.settings,
-            color: Colors.blue,
-            onTap: () => context.goNamed(AppRoute.settings.name)),
+          title: l10n.navSettings,
+          subtitle: l10n.homeSettingsSubtitle,
+          icon: Icons.settings,
+          color: Colors.blue,
+          onTap: () => context.goNamed(AppRoute.settings.name),
+        ),
       ],
     );
 
+    // cards pequenos
     var candidate2 = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GridView.count(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            // padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
-            children: [
-              _SmallNavigationCard(
-                  title: 'Chat',
-                  icon: Icons.chat,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.chat.name)),
-              _SmallNavigationCard(
-                  title: 'Mapa',
-                  icon: Icons.map_outlined,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.map.name)),
-              _SmallNavigationCard(
-                  title: 'Previsões',
-                  icon: Icons.cloudy_snowing,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.forecast.name)),
-              _SmallNavigationCard(
-                  title: 'Contatos',
-                  icon: Icons.people,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.contacts.name)),
-              _SmallNavigationCard(
-                  title: 'Configurações',
-                  icon: Icons.settings,
-                  color: Colors.blue,
-                  onTap: () => context.goNamed(AppRoute.settings.name)),
-            ])
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: [
+            _SmallNavigationCard(
+              title: l10n.navChat,
+              icon: Icons.chat,
+              color: Colors.blue,
+              onTap: () => context.goNamed(AppRoute.chat.name),
+            ),
+            _SmallNavigationCard(
+              title: l10n.navMap,
+              icon: Icons.map_outlined,
+              color: Colors.blue,
+              onTap: () => context.goNamed(AppRoute.map.name),
+            ),
+            _SmallNavigationCard(
+              title: l10n.navForecast,
+              icon: Icons.cloudy_snowing,
+              color: Colors.blue,
+              onTap: () => context.goNamed(AppRoute.forecast.name),
+            ),
+            _SmallNavigationCard(
+              title: l10n.navContacts,
+              icon: Icons.people,
+              color: Colors.blue,
+              onTap: () => context.goNamed(AppRoute.contacts.name),
+            ),
+            _SmallNavigationCard(
+              title: l10n.navSettings,
+              icon: Icons.settings,
+              color: Colors.blue,
+              onTap: () => context.goNamed(AppRoute.settings.name),
+            ),
+          ],
+        ),
       ],
     );
 
     return Scaffold(
       backgroundColor: const Color(0xFF0b2351),
       body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: ListView(children: [
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        padding: const EdgeInsets.all(20.0),
+        child: ListView(children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               ElevatedButton(
-                  onPressed: alternateOption,
-                  child: const Text("Alternar visualização")),
+                onPressed: alternateOption,
+                child: Text(l10n.buttonToggleView),
+              ),
               const Icon(
                 Icons.chat_bubble_outline,
                 size: 80,
                 color: Colors.white,
               ),
               const SizedBox(height: 32),
-              const Text(
-                'Bem-vindo ao Águas da Borborema',
-                style: TextStyle(
+              Text(
+                l10n.homeWelcomeTitle,
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -124,16 +139,18 @@ class _HomeScreen extends State<HomeScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Explore nossa solução de assistência à eventos de catástrofes naturais',
-                style: TextStyle(fontSize: 16, color: Colors.white70),
+              Text(
+                l10n.homeWelcomeSubtitle,
+                style: const TextStyle(fontSize: 16, color: Colors.white70),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 48),
               if (option) candidate1,
-              if (!option) candidate2
-            ])
-          ])),
+              if (!option) candidate2,
+            ],
+          )
+        ]),
+      ),
     );
   }
 }
@@ -166,36 +183,19 @@ class _SmallNavigationCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.2),
+                  color: color.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(icon, color: Colors.blue, size: 24),
+                child: Icon(icon, color: color, size: 24),
               ),
-              const SizedBox(
-                height: 16.0,
+              const SizedBox(height: 16),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(width: 16),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-
-              // Expanded(
-              //   child:
-              // ),
-              // const Icon(
-              //   Icons.arrow_forward_ios,
-              //   color: Colors.white54,
-              //   size: 16,
-              // ),
             ],
           ),
         ),
@@ -233,10 +233,10 @@ class _NavigationCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.2),
+                  color: color.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(icon, color: Colors.blue, size: 24),
+                child: Icon(icon, color: color, size: 24),
               ),
               const SizedBox(width: 16),
               Expanded(
