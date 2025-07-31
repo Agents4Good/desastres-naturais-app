@@ -1,0 +1,39 @@
+{
+    "@@locale": "pt",
+    "appTitle": "Águas da Borborema",
+  
+    "navHome": "Home",
+    "navChat": "Chat",
+    "navMap": "Mapa",
+    "navForecast": "Previsões",
+    "navSettings": "Configurações",
+    "navContacts": "Contatos",
+  
+    "notificationsScreenTitle": "Previsões",
+  
+    "severityHigh": "Gravidade Alta",
+    "severityMedium": "Gravidade Média",
+    "severityLow": "Gravidade Baixa",
+    "noStreetsWithSeverity": "- Nenhuma rua com {severity}",
+  
+    "forecastItemTitle": "Previsão - {date}",
+    "executionDate": "Data de execução\n{date}",
+    "notificationsError": "Erro ao carregar notificações: {error}",
+  
+    "error404": "404 - Página não encontrada!",
+    "error501": "501 - Ainda não implementado!",
+  
+    "buttonReturnHome": "Voltar a Home",
+  
+    "notificationChannelName": "Notificações importantes",
+    "notificationChannelDescription": "Este canal é usado para notificações importantes.",
+    "notificationTestTitle": "Notificação de Teste",
+    "notificationTestBody": "Esta é uma notificação local de teste.",
+  
+    "imageSupportEnabled": "Suporte a imagem ativado",
+    "loadingModel": "Carregando o modelo",
+    "imageSupportInfoTitle": "O modelo suporta imagens",
+    "imageSupportInfoBody": "Uso o botão 📷 para enviar imagens",
+    "errorBannerMessage": "{errorMessage}"
+  }
+  
