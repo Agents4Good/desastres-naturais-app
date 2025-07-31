@@ -155,4 +155,30 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get addContactHintLocation => 'Localização';
+
+  @override
+  String get highlightedFloodPoints => 'Os pontos em destaque sofreram alagamentos!';
+
+  @override
+  String get imageSelectionNotSupportedWeb => 'Seleção de imagem ainda não é suportada na web';
+
+  @override
+  String errorSelectingImage(Object error) {
+    return 'Erro na seleção da imagem: $error';
+  }
+
+  @override
+  String get addImageTooltip => 'Adicionar imagem';
+
+  @override
+  String get addDescriptionToImage => 'Adicionar descrição à imagem...';
+
+  @override
+  String get sendMessage => 'Enviar mensagem';
+
+  @override
+  String get imageLabel => 'Imagem';
+
+  @override
+  String get removeImageTooltip => 'Remover imagem';
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:aguas_da_borborema/src/features/language/language_controller.dart'; // ajuste o caminho
 
 class ChatApp extends ConsumerWidget {
   const ChatApp({super.key});
@@ -10,6 +11,9 @@ class ChatApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final goRouter = ref.watch(goRouterProvider);
+
+    // Observa o controlador de idioma para obter o locale atual
+    final languageController = ref.watch(languageControllerProvider);
 
     return MaterialApp.router(
       routerConfig: goRouter,
@@ -83,8 +87,8 @@ class ChatApp extends ConsumerWidget {
         Locale('pt'),
       ],
 
-      // 3) Idioma fixo (ou remova para usar o do sistema)
-     // locale: const Locale('pt'),
+      // 3) Idioma dinâmico vindo do LanguageController
+      locale: languageController.currentLocale,
     );
   }
 }

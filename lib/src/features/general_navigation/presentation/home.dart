@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:aguas_da_borborema/src/features/language/language_controller.dart';
 import 'package:aguas_da_borborema/src/routing/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HomeScreen();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreen extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool option = false;
 
   void alternateOption() {
@@ -22,6 +24,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final languageController = ref.watch(languageControllerProvider);
 
     // cards grandes
     var candidate1 = Column(
@@ -61,6 +64,16 @@ class _HomeScreen extends State<HomeScreen> {
           icon: Icons.settings,
           color: Colors.blue,
           onTap: () => context.goNamed(AppRoute.settings.name),
+        ),
+        // **Novo card de idioma**
+        _NavigationCard(
+          title: 'Language',
+          subtitle: languageController.isEnglish ? 'EN' : 'PT', // mostra EN quando inglês ativo
+          icon: Icons.language,
+          color: Colors.blue, // mesma cor dos outros
+          onTap: () {
+            ref.read(languageControllerProvider).toggleLanguage();
+          },
         ),
       ],
     );
@@ -106,6 +119,15 @@ class _HomeScreen extends State<HomeScreen> {
               color: Colors.blue,
               onTap: () => context.goNamed(AppRoute.settings.name),
             ),
+            // **Novo small card de idioma**
+            _SmallNavigationCard(
+              title: languageController.isEnglish ? 'EN' : 'PT',
+              icon: Icons.language,
+              color: Colors.blue, // mesma cor dos outros
+              onTap: () {
+                ref.read(languageControllerProvider).toggleLanguage();
+              },
+            ),
           ],
         ),
       ],
@@ -115,41 +137,44 @@ class _HomeScreen extends State<HomeScreen> {
       backgroundColor: const Color(0xFF0b2351),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: ListView(children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: alternateOption,
-                child: Text(l10n.buttonToggleView),
-              ),
-              const Icon(
-                Icons.chat_bubble_outline,
-                size: 80,
-                color: Colors.white,
-              ),
-              const SizedBox(height: 32),
-              Text(
-                l10n.homeWelcomeTitle,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+        child: ListView(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: alternateOption,
+                  child: Text(l10n.buttonToggleView),
+                ),
+                const SizedBox(height: 12),
+                const Icon(
+                  Icons.chat_bubble_outline,
+                  size: 80,
                   color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                l10n.homeWelcomeSubtitle,
-                style: const TextStyle(fontSize: 16, color: Colors.white70),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 48),
-              if (option) candidate1,
-              if (!option) candidate2,
-            ],
-          )
-        ]),
+                const SizedBox(height: 32),
+                Text(
+                  l10n.homeWelcomeTitle,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  l10n.homeWelcomeSubtitle,
+                  style: const TextStyle(fontSize: 16, color: Colors.white70),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 48),
+                if (option) candidate1,
+                if (!option) candidate2,
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

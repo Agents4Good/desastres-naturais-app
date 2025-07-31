@@ -91,6 +91,50 @@
     "@addContactLabelName": { "description": "Label for name field in add contact dialog" },
   
     "addContactHintLocation": "Location",
-    "@addContactHintLocation": { "description": "Hint text for location field in add contact dialog" }
+    "@addContactHintLocation": { "description": "Hint text for location field in add contact dialog" },
+
+    "highlightedFloodPoints": "Highlighted points suffered flooding!",
+    "@highlightedFloodPoints": {
+    "description": "Message shown above the map indicating points that suffered flooding"
+    },
+
+    "imageSelectionNotSupportedWeb": "Image selection is not yet supported on the web",
+  "@imageSelectionNotSupportedWeb": {
+    "description": "Message shown when user tries to select image on the web version"
+  },
+
+  "errorSelectingImage": "Error selecting image: {error}",
+  "@errorSelectingImage": {
+    "description": "Error message shown when there's a problem selecting an image",
+    "placeholders": {
+      "error": {}
+    }
+  },
+
+  "addImageTooltip": "Add image",
+  "@addImageTooltip": {
+    "description": "Tooltip for the add image button in the chat"
+  },
+
+  "addDescriptionToImage": "Add description to the image...",
+  "@addDescriptionToImage": {
+    "description": "Placeholder text for the input field when an image is selected"
+  },
+
+  "sendMessage": "Send message",
+  "@sendMessage": {
+    "description": "Placeholder text for the input field when no image is selected"
+  },
+
+  "imageLabel": "Image",
+  "@imageLabel": {
+    "description": "Default name for images in the image preview"
+  },
+
+  "removeImageTooltip": "Remove image",
+  "@removeImageTooltip": {
+    "description": "Tooltip for the button that removes the selected image"
+  }
+
   }
   

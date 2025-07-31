@@ -91,6 +91,50 @@
     "@addContactLabelName": { "description": "Label do campo nome no diálogo de adicionar contato" },
   
     "addContactHintLocation": "Localização",
-    "@addContactHintLocation": { "description": "Hint do campo localização no diálogo de adicionar contato" }
+    "@addContactHintLocation": { "description": "Hint do campo localização no diálogo de adicionar contato" },
+
+    "highlightedFloodPoints": "Os pontos em destaque sofreram alagamentos!",
+    "@highlightedFloodPoints": {
+    "description": "Mensagem mostrada acima do mapa indicando os pontos que sofreram alagamentos"
+    },
+
+    "imageSelectionNotSupportedWeb": "Seleção de imagem ainda não é suportada na web",
+  "@imageSelectionNotSupportedWeb": {
+    "description": "Mensagem mostrada quando usuário tenta selecionar imagem na versão web"
+  },
+
+  "errorSelectingImage": "Erro na seleção da imagem: {error}",
+  "@errorSelectingImage": {
+    "description": "Mensagem de erro exibida quando ocorre problema ao selecionar imagem",
+    "placeholders": {
+      "error": {}
+    }
+  },
+
+  "addImageTooltip": "Adicionar imagem",
+  "@addImageTooltip": {
+    "description": "Tooltip para o botão de adicionar imagem no chat"
+  },
+
+  "addDescriptionToImage": "Adicionar descrição à imagem...",
+  "@addDescriptionToImage": {
+    "description": "Texto placeholder para campo de texto quando uma imagem foi selecionada"
+  },
+
+  "sendMessage": "Enviar mensagem",
+  "@sendMessage": {
+    "description": "Texto placeholder para campo de texto quando não há imagem selecionada"
+  },
+
+  "imageLabel": "Imagem",
+  "@imageLabel": {
+    "description": "Nome padrão para imagens no preview de seleção"
+  },
+
+  "removeImageTooltip": "Remover imagem",
+  "@removeImageTooltip": {
+    "description": "Tooltip para o botão que remove a imagem selecionada"
+  }
+
   }
   

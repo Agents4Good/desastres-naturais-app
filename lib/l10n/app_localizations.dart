@@ -370,6 +370,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Location'**
   String get addContactHintLocation;
+
+  /// Message shown above the map indicating points that suffered flooding
+  ///
+  /// In en, this message translates to:
+  /// **'Highlighted points suffered flooding!'**
+  String get highlightedFloodPoints;
+
+  /// Message shown when user tries to select image on the web version
+  ///
+  /// In en, this message translates to:
+  /// **'Image selection is not yet supported on the web'**
+  String get imageSelectionNotSupportedWeb;
+
+  /// Error message shown when there's a problem selecting an image
+  ///
+  /// In en, this message translates to:
+  /// **'Error selecting image: {error}'**
+  String errorSelectingImage(Object error);
+
+  /// Tooltip for the add image button in the chat
+  ///
+  /// In en, this message translates to:
+  /// **'Add image'**
+  String get addImageTooltip;
+
+  /// Placeholder text for the input field when an image is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Add description to the image...'**
+  String get addDescriptionToImage;
+
+  /// Placeholder text for the input field when no image is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Send message'**
+  String get sendMessage;
+
+  /// Default name for images in the image preview
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get imageLabel;
+
+  /// Tooltip for the button that removes the selected image
+  ///
+  /// In en, this message translates to:
+  /// **'Remove image'**
+  String get removeImageTooltip;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
