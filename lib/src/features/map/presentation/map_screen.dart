@@ -1,6 +1,7 @@
 import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:aguas_da_borborema/src/features/forecast/presentation/forecast_controller.dart';
 import 'package:aguas_da_borborema/src/features/forecast/presentation/forecast_next_day_controller.dart';
+import 'package:aguas_da_borborema/src/services/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -72,24 +73,51 @@ class MapScreen extends ConsumerWidget {
                       subdomains: const ['a', 'b', 'c'],
                       userAgentPackageName: 'com.exemplo.aguasdaborborema',
                     ),
-                    MarkerLayer(
-                      markers: state.when(data: (previsaoAlagamentoCompleta) {
-                        return previsaoAlagamentoCompleta.previsoes.map((p) {
-                          return Marker(
-                            point: LatLng(p.latitude, p.longitude),
-                            width: 40,
-                            height: 40,
-                            child: Icon(
-                              Icons.warning_rounded,
-                              color: _corGravidade(p.gravidade),
-                              size: 36,
-                            ),
-                          );
-                      }).toList();
-                      }, error: (error, stack) {
-                        print('Erro ao carregar previsões: $error');
-                        return <Marker>[];
-                      }, loading: () => <Marker>[])
+                    FutureBuilder<List<Contact>>(
+                      future: contactService.getContacts(),
+                      builder: (context, snapShot) {
+                        List<Contact> contacts = [];
+                        if(snapShot.hasData){
+                          contacts = snapShot.data ?? [];
+                        }
+                        return MarkerLayer(
+                          markers: [...state.when(data: (previsaoAlagamentoCompleta) {
+                            final previsoes = previsaoAlagamentoCompleta.previsoes;
+                            return [
+                              // markers dos alagamentos
+                              ...previsoes.map((p) {
+                                return Marker(
+                                  point: LatLng(p.latitude, p.longitude),
+                                  width: 40,
+                                  height: 40,
+                                  child: Icon(
+                                    Icons.warning_rounded,
+                                    color: _corGravidade(p.gravidade),
+                                    size: 36,
+                                  ),
+                                );
+                              }),
+
+                              // markers dos contatos
+                              ...contacts.map((c) {
+                                return Marker(
+                                  point: LatLng(c.latitude, c.longitude),
+                                  width: 40,
+                                  height: 40,
+                                  child: Icon(
+                                    Icons.person_2_rounded,
+                                    size: 36,
+                                    color: _corContato(c.alagamentoMaisProximo(previsoes)),
+                                  ),
+                                );
+                              }),
+                            ];
+                          }, error: (error, stack) {
+                            print('Erro ao carregar previsões: $error');
+                            return <Marker>[];
+                          }, loading: () => <Marker>[])]
+                        );
+                      }
                     ),
                   ],
                 ),
@@ -132,5 +160,15 @@ class MapScreen extends ConsumerWidget {
     case GravidadeAlagamento.alta:
       return Colors.red;
   }
+  }
+
+  Color _corContato(GravidadeAlagamento? gravidade) {
+    print(gravidade);
+    const cores = {
+      GravidadeAlagamento.baixa: Colors.green,
+      GravidadeAlagamento.media: Colors.amber,
+      GravidadeAlagamento.alta: Colors.red,
+    };
+    return cores[gravidade] ?? Colors.blueAccent;
   }
 }
