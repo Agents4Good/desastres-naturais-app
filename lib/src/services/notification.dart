@@ -32,7 +32,7 @@ class NotificationService {
     await _plugin.initialize(initializationSettings);
   }
 
-  static Future<void> showTestNotification() async {
+  static Future<void> showNotification() async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'Channel_id',
       'Channel_title',
