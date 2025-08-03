@@ -86,7 +86,71 @@ class AppLocalizationsPt extends AppLocalizations {
   String get imageSupportEnabled => 'Suporte a imagem ativado';
 
   @override
+  String get selectModel => 'Selecione um modelo';
+
+  @override
   String get loadingModel => 'Carregando o modelo';
+
+  @override
+  String get downloadModelAppBarTitle => 'Baixar modelo';
+
+  @override
+  String get deleteModelConfirmation => 'Deletar o modelo?';
+
+  @override
+  String get deleteModelConfirmationDesc1 => 'Tem certeza que quer deletar o modelo?';
+
+  @override
+  String get deleteModelConfirmationDesc2 => 'Você terá que baixá-lo novamente se quiser usá-lo novamente.';
+
+  @override
+  String downloadModelTitle(String modelName) {
+    return 'Baixar modelo $modelName';
+  }
+
+  @override
+  String get hfTokenRequired => 'Por favor, defina o seu token primeiro.';
+
+  @override
+  String get hfTokenFillInLabel => 'Preencha o Token de Acesso do HuggingFace';
+
+  @override
+  String get hfTokenFillInHint => 'Preencha aqui seu token de acesso do Hugging Face';
+
+  @override
+  String get hfTokenSuccessMessage => 'Token de acesso salvo com sucesso!';
+
+  @override
+  String get hfCreateTokenHelp => 'Para criar um token de acesso, por favor, visite os ajustes de sua conta do HuggingFace em ';
+
+  @override
+  String get hfVerifyTokenPerms => '. Verifique se o seu token possui acesso de leitura ao repositório.';
+
+  @override
+  String get genericConfirm => 'Sim';
+
+  @override
+  String get genericDeny => 'Não';
+
+  @override
+  String get modelDelete => 'Deletar';
+
+  @override
+  String get modelDownload => 'Baixar';
+
+  @override
+  String get modelDownloadFailure => 'Falha ao baixar o modelo.';
+
+  @override
+  String modelDownloadProgress(double progress) {
+    return 'Progresso do Download: ${(progress * 100).toStringAsFixed(1)}%';
+  }
+
+  @override
+  String get modelLicense => 'Licença: ';
+
+  @override
+  String get useThisModel => 'Usar este modelo no Chat';
 
   @override
   String get imageSupportInfoTitle => 'O modelo suporta imagens';

@@ -1,3 +1,4 @@
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/pigeon.g.dart';
@@ -11,6 +12,7 @@ class ModelSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final models = Model.values.where((model) {
       if (model.localModel) {
         // return kIsWeb;
@@ -22,7 +24,7 @@ class ModelSelectionScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF0b2351),
       appBar: AppBar(
-        title: const Text('Selecione um modelo'),
+        title: Text(l10n.selectModel),
         backgroundColor: const Color(0xFF0b2351),
       ),
       body: ListView.builder(

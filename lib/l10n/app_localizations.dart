@@ -233,11 +233,56 @@ abstract class AppLocalizations {
   /// **'Image support enabled'**
   String get imageSupportEnabled;
 
+  /// No description provided for @selectModel.
+  /// 
+  /// In en, this message translates to:
+  /// **'Select a model'**
+  String get selectModel;
+
   /// No description provided for @loadingModel.
   ///
   /// In en, this message translates to:
   /// **'Loading model'**
   String get loadingModel;
+
+  String get downloadModelAppBarTitle;
+
+  String get deleteModelConfirmation;
+
+  String get deleteModelConfirmationDesc1;
+
+  String get deleteModelConfirmationDesc2;
+
+  // Download model title
+  String downloadModelTitle(String modelName);
+
+  String get hfTokenRequired;
+
+  String get hfTokenFillInLabel;
+
+  String get hfTokenFillInHint;
+
+  String get hfTokenSuccessMessage;
+
+  String get hfCreateTokenHelp;
+
+  String get hfVerifyTokenPerms;
+
+  String get modelDelete;
+
+  String get modelDownload;
+
+  String get modelDownloadFailure;
+
+  String modelDownloadProgress(double progress);
+
+  String get modelLicense;
+
+  String get useThisModel;
+
+  String get genericConfirm;
+
+  String get genericDeny;
 
   /// No description provided for @imageSupportInfoTitle.
   ///

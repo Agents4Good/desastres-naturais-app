@@ -86,7 +86,65 @@ class AppLocalizationsEn extends AppLocalizations {
   String get imageSupportEnabled => 'Image support enabled';
 
   @override
+  String get selectModel => 'Select a model';
+
+  @override
   String get loadingModel => 'Loading model';
+
+  @override
+  String get downloadModelAppBarTitle => 'Download model';
+
+  @override
+  String get deleteModelConfirmation => 'Delete model?';
+
+  @override
+  String downloadModelTitle(String modelName) {
+    return 'Download model $modelName';
+  }
+
+  @override
+  String get hfTokenRequired => 'Please set your token first.';
+
+  @override
+  String get hfTokenFillInLabel => 'Fill in the HuggingFace Access Token';
+
+  @override
+  String get hfTokenFillInHint => 'Fill in your Hugging Face access token here';
+
+  @override
+  String get hfTokenSuccessMessage => 'Access token saved successfully!';
+
+  @override
+  String get hfCreateTokenHelp => 'To create an access token, please visit your HuggingFace account settings at ';
+
+  @override
+  String get hfVerifyTokenPerms => '. Make sure your token has read access to the repository.';
+
+  @override
+  String get genericConfirm => 'Yes';
+
+  @override
+  String get genericDeny => 'No';
+
+  @override
+  String get modelDelete => 'Delete';
+
+  @override
+  String get modelDownload => 'Download';
+
+  @override
+  String get modelDownloadFailure => 'Failed to download the model.';
+
+  @override
+  String modelDownloadProgress(double progress) {
+    return 'Download Progress: ${(progress * 100).toStringAsFixed(1)}%';
+  }
+
+  @override
+  String get modelLicense => 'License: ';
+
+  @override
+  String get useThisModel => 'Use this model in Chat';
 
   @override
   String get imageSupportInfoTitle => 'Model supports images';
@@ -137,6 +195,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteContactConfirmation => 'Are you sure you want to delete this contact?';
+
+
+  @override
+  String get deleteModelConfirmationDesc1 => 'Are you sure you want to delete this model?';
+
+  @override
+  String get deleteModelConfirmationDesc2 => 'You will need to download it again if you want to use it again.';
 
   @override
   String get buttonCancel => 'Cancel';
