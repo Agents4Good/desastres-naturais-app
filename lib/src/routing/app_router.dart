@@ -1,7 +1,10 @@
+import 'dart:core';
+
+import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/app_layout.dart';
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/home.dart';
 import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
-import 'package:aguas_da_borborema/src/routing/contacts_screen.dart';
+import 'package:aguas_da_borborema/src/features/contacts/contacts_screen.dart';
 import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
@@ -80,21 +83,21 @@ GoRouter goRouter(Ref ref) {
             path: 'forecast',
             name: AppRoute.forecast.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
             path: 'settings',
             name: AppRoute.settings.name,
             builder: (context, state) {
-              return NotImplementedScreen();
+              return const NotImplementedScreen();
             },
           ),
           GoRoute(
             path: 'contacts',
             name: AppRoute.contacts.name,
             builder: (context, state) {
-              return ContactsScreen();
+              return const ContactsScreen();
             },
           ),
 

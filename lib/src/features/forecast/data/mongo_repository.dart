@@ -13,18 +13,25 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
     return ForecastMongoRepository();
   }
 
+  final String mongodbCollection = dotenv.env['MONGODB_PREVISOES_COLLECTION'] ?? 'previsoes';
 
-  // Example method to fetch flood predictions
-  Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletas() async {
+  Future<Db> __createDb() async {
     final String mongodbUser = dotenv.env['MONGODB_USER'] ?? 'mongo';
     final String mongodbPass = dotenv.env['MONGODB_PASS'] ?? 'pass';
     final String mongodbHost = dotenv.env['MONGODB_HOST'] ?? 'localhost';
     final String mongodbPort = dotenv.env['MONGODB_PORT'] ?? '27017';
     final String mongodbDBName = dotenv.env['MONGODB_DB_NAME'] ?? 'n8n';
-    final String mongodbCollection = dotenv.env['MONGODB_PREVISOES_COLLECTION'] ?? 'previsoes';
 
     final String connectionString = "mongodb://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/$mongodbDBName?authSource=admin&ssl=false";
+<<<<<<< HEAD
     Db db = await Db.create(connectionString);
+=======
+    return await Db.create(connectionString);
+  }
+  // Example method to fetch flood predictions
+  Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletasUltimosTresDias() async {
+    Db db = await __createDb();
+>>>>>>> dev
     await db.open();
 
     List<PrevisaoAlagamentoCompleta> previsoesCompletas = [];
@@ -32,6 +39,22 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
     await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', DateTime.now().subtract(const Duration(days: 3)))).forEach((json) {
       previsoesCompletas.add(PrevisaoAlagamentoCompleta.fromJson(json));
     });
+    await db.close();
+
+    return previsoesCompletas;
+  }
+
+  // Example method to fetch flood predictions
+  Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletasUltimaSemana() async {
+    Db db = await __createDb();
+    await db.open();
+
+    List<PrevisaoAlagamentoCompleta> previsoesCompletas = [];
+  
+    await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', DateTime.now().subtract(const Duration(days: 7)))).forEach((json) {
+      previsoesCompletas.add(PrevisaoAlagamentoCompleta.fromJson(json));
+    });
+    await db.close();
 
     return previsoesCompletas;
   }
