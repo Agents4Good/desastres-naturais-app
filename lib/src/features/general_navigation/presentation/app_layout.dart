@@ -70,13 +70,6 @@ class AppLayout extends ConsumerWidget {
       //     } ).toList(),
       //   )
       // )
-      //   child: ListView(
-      //     children: const [
-      //       ListTile(title: Text("Element 1")),
-      //       ListTile(title: Text("Element 2")),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

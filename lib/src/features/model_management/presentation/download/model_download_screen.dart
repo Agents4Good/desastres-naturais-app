@@ -190,7 +190,33 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                     )
                   : ElevatedButton(
                       onPressed:
-                          !needToDownload ? _deleteModel : _downloadModel,
+                          !needToDownload ? () => showDialog<String>(
+            context: context,
+            builder:
+              (BuildContext context) => AlertDialog(
+                        title: const Text('Deletar Modelo?'),
+                        content: const SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text('Tem certeza que quer deletar o modelo?'),
+                              Text('Você terá que baixá-lo novamente se quiser usá-lo novamente.'),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Sim'),
+                            onPressed: _deleteModel,
+                          ),
+                          TextButton(
+                            child: const Text('Não'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      )
+                      ) : _downloadModel,
                       child: Text(!needToDownload ? 'Deletar' : 'Baixar'),
                     ),
             ),

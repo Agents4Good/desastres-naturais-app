@@ -46,7 +46,7 @@ class _HomeScreen extends State<HomeScreen> {
         _NavigationCard(
             title: 'Contatos',
             subtitle: 'Acesse sua lista de contatos.',
-            icon: Icons.people,
+            icon: Icons.person,
             color: Colors.blue,
             onTap: () => context.goNamed(AppRoute.contacts.name)),
         _NavigationCard(
