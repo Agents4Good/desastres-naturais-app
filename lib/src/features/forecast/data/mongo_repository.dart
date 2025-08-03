@@ -23,15 +23,11 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
     final String mongodbDBName = dotenv.env['MONGODB_DB_NAME'] ?? 'n8n';
 
     final String connectionString = "mongodb://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/$mongodbDBName?authSource=admin&ssl=false";
-<<<<<<< HEAD
-    Db db = await Db.create(connectionString);
-=======
     return await Db.create(connectionString);
   }
   // Example method to fetch flood predictions
   Future<List<PrevisaoAlagamentoCompleta>> fetchPrevisoesCompletasUltimosTresDias() async {
     Db db = await __createDb();
->>>>>>> dev
     await db.open();
 
     List<PrevisaoAlagamentoCompleta> previsoesCompletas = [];

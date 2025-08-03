@@ -1,3 +1,4 @@
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 import 'package:aguas_da_borborema/src/constants/available_models.dart';
 import 'package:aguas_da_borborema/src/features/chat/presentation/chat_screen.dart';
 import 'package:aguas_da_borborema/src/services/model_download_service.dart';
@@ -45,11 +46,12 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
   }
 
   Future<void> _downloadModel() async {
+    final l10n = AppLocalizations.of(context)!;
     final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     if (widget.model.needsAuth && _token.isEmpty) {
       scaffoldMessenger.showSnackBar(
-        const SnackBar(content: Text('Por favor, defina o seu token primeiro.')),
+        SnackBar(content: Text(l10n.hfTokenRequired)),
       );
       return;
     }
@@ -69,7 +71,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
       });
     } catch (e) {
       scaffoldMessenger.showSnackBar(
-        const SnackBar(content: Text('Falha ao baixar o modelo.')),
+        SnackBar(content: Text(l10n.modelDownloadFailure)),
       );
     } finally {
       if (mounted) {
@@ -89,9 +91,10 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Baixar Modelo'),
+        title: Text(l10n.downloadModelAppBarTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -104,7 +107,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Baixar Modelo ${widget.model.name}',
+              l10n.downloadModelTitle(widget.model.displayName),
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             if (widget
@@ -113,8 +116,8 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                 controller: _tokenController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'Preencha o Token de Acesso do HuggingFace',
-                  hintText: 'Preencha aqui seu token de acesso do Hugging Face',
+                  labelText: l10n.hfTokenFillInLabel,
+                  hintText: l10n.hfTokenFillInHint,
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.save),
                     onPressed: () async {
@@ -123,8 +126,8 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                         await _saveToken(token);
                         if (context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Token de acesso salvo com sucesso!'),
+                            SnackBar(
+                              content: Text(l10n.hfTokenSuccessMessage),
                             ),
                           );
                         }
@@ -137,7 +140,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
               RichText(
                 text: TextSpan(
                   text:
-                      'Para criar um token de acesso, por favor, visite os ajustes de sua conta do huggingface em ',
+                      l10n.hfCreateTokenHelp,
                   children: [
                     TextSpan(
                       text: 'https://huggingface.co/settings/tokens',
@@ -151,9 +154,9 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                               'https://huggingface.co/settings/tokens'));
                         },
                     ),
-                    const TextSpan(
+                    TextSpan(
                       text:
-                          '. Verifique se o seu token possui acesso de leitura ao repositório.',
+                          l10n.hfVerifyTokenPerms,
                     ),
                   ],
                 ),
@@ -161,7 +164,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
             if (widget.model.licenseUrl.isNotEmpty)
               RichText(
                 text: TextSpan(
-                  text: 'Licença: ',
+                  text: l10n.modelLicense,
                   children: [
                     TextSpan(
                       text: widget.model.licenseUrl,
@@ -182,8 +185,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
               child: _progress > 0.0
                   ? Column(
                       children: [
-                        Text(
-                            'Progresso do Download: ${(_progress * 100).toStringAsFixed(1)}%'),
+                        Text(l10n.modelDownloadProgress(_progress)),
                         const SizedBox(height: 8),
                         LinearProgressIndicator(value: _progress),
                       ],
@@ -194,22 +196,22 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
             context: context,
             builder:
               (BuildContext context) => AlertDialog(
-                        title: const Text('Deletar Modelo?'),
-                        content: const SingleChildScrollView(
+                        title: Text(l10n.deleteModelConfirmation),
+                        content: SingleChildScrollView(
                           child: ListBody(
                             children: <Widget>[
-                              Text('Tem certeza que quer deletar o modelo?'),
-                              Text('Você terá que baixá-lo novamente se quiser usá-lo novamente.'),
+                              Text(l10n.deleteModelConfirmationDesc1),
+                              Text(l10n.deleteModelConfirmationDesc2),
                             ],
                           ),
                         ),
                         actions: <Widget>[
                           TextButton(
-                            child: const Text('Sim'),
+                            child: Text(l10n.genericConfirm),
                             onPressed: _deleteModel,
                           ),
                           TextButton(
-                            child: const Text('Não'),
+                            child: Text(l10n.genericDeny),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
@@ -217,7 +219,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                         ],
                       )
                       ) : _downloadModel,
-                      child: Text(!needToDownload ? 'Deletar' : 'Baixar'),
+                      child: Text(!needToDownload ? l10n.modelDelete : l10n.modelDownload),
                     ),
             ),
             const Spacer(),
@@ -232,7 +234,7 @@ class _ModelDownloadScreenState extends State<ModelDownloadScreen> {
                         return ChatScreen(model: widget.model);
                       }));
                     },
-                    child: const Text('Usar este modelo no Chat'),
+                    child: Text(l10n.useThisModel),
                   ),
                 ),
               ),

@@ -4,6 +4,7 @@ import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
 import 'package:aguas_da_borborema/src/services/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 import '../../services/location_service.dart';
 
@@ -19,13 +20,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
   bool loading = false;
 
   void getContacts() async {
-    setState(() {
-      loading = true;
-    });
+    setState(() => loading = true);
     contacts = await contactService.getContacts();
-    setState(() {
-      loading = false;
-    });
+    setState(() => loading = false);
   }
 
   @override
@@ -36,58 +33,57 @@ class _ContactsScreenState extends State<ContactsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contatos Salvos'),
+        title: Text(l10n.contactsTitle),
         backgroundColor: const Color(0xFF0b2351),
       ),
       body: contacts.isEmpty
-          ? const Center(child: Text("Adicione um novo contato."))
+          ? Center(child: Text(l10n.contactsEmptyMessage))
           : Column(
-              children: contacts
-                  .map((c) => ListTile(
-                        title: Text(c.name),
-                        subtitle: Text(c.address),
-                        trailing: PopupMenuButton(itemBuilder: (context) {
-                          return [
-                            PopupMenuItem(
-                              child: const Text("Editar"),
-                              onTap: () async {
-                                var addStatus = await showDialog(
-                                    context: context,
-                                    builder: (builder) =>
-                                        UpdateContact(contact: c));
-                                if (addStatus == true) {
-                                  getContacts();
-                                }
-                              },
-                            ),
-                            PopupMenuItem(
-                              child: const Text("Excluir"),
-                              onTap: () async {
-                                var addStatus = await showDialog(
-                                    context: context,
-                                    builder: (builder) =>
-                                        DeleteContact(id: c.id!));
-                                if (addStatus == true) {
-                                  getContacts();
-                                }
-                              },
-                            )
-                          ];
-                        }),
-                      ))
-                  .toList(),
+              children: contacts.map((c) {
+                return ListTile(
+                  title: Text(c.name),
+                  subtitle: Text(c.address),
+                  trailing: PopupMenuButton(itemBuilder: (_) {
+                    return [
+                      PopupMenuItem(
+                        child: Text(l10n.contactsEdit),
+                        onTap: () async {
+                          final updated = await showDialog<bool>(
+                            context: context,
+                            builder: (_) => UpdateContact(contact: c),
+                          );
+                          if (updated == true) getContacts();
+                        },
+                      ),
+                      PopupMenuItem(
+                        child: Text(l10n.contactsDelete),
+                        onTap: () async {
+                          final deleted = await showDialog<bool>(
+                            context: context,
+                            builder: (_) => DeleteContact(id: c.id!),
+                          );
+                          if (deleted == true) getContacts();
+                        },
+                      ),
+                    ];
+                  }),
+                );
+              }).toList(),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          var addStatus = await showDialog(
-              context: context, builder: (builder) => const AddContact());
-          if (addStatus == true) {
-            getContacts();
-          }
+          final added = await showDialog<bool>(
+            context: context,
+            builder: (_) => const AddContact(),
+          );
+          if (added == true) getContacts();
         },
         child: const Icon(Icons.add),
+        tooltip: l10n.addContactLabelName,
       ),
     );
   }
@@ -99,22 +95,23 @@ class DeleteContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
-        content:
-            const Text("Você tem certeza de que deseja excluir este contato?"),
-        actions: [
-          TextButton(
-              onPressed: () async {
-                context.pop();
-              },
-              child: const Text("Cancelar")),
-          FilledButton(
-              onPressed: () async {
-                await contactService.delete(id);
-                context.pop(true);
-              },
-              child: const Text("Salvar")),
-        ]);
+      content: Text(l10n.deleteContactConfirmation),
+      actions: [
+        TextButton(
+          onPressed: () => context.pop(),
+          child: Text(l10n.buttonCancel),
+        ),
+        FilledButton(
+          onPressed: () async {
+            await contactService.delete(id);
+            context.pop(true);
+          },
+          child: Text(l10n.buttonSave),
+        ),
+      ],
+    );
   }
 }
 
@@ -138,45 +135,42 @@ class _UpdateContactState extends State<UpdateContact> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final nameController = TextEditingController(text: contact.name);
+    final addressController = TextEditingController(text: contact.address);
+
     return AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: const InputDecoration(label: Text("Nome")),
-              controller: TextEditingController(text: contact.name),
-              onChanged: (value) {
-                contact.name = value;
-              },
-            ),
-            TextField(
-              decoration: const InputDecoration(label: Text("Endereço")),
-              controller: TextEditingController(text: contact.address),
-              onChanged: (value) {
-                contact.address = value;
-              },
-            ),
-          ],
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(label: Text(l10n.updateContactLabelName)),
+            controller: nameController,
+            onChanged: (v) => contact.name = v,
+          ),
+          TextField(
+            decoration: InputDecoration(label: Text(l10n.updateContactLabelAddress)),
+            controller: addressController,
+            onChanged: (v) => contact.address = v,
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => context.pop(),
+          child: Text(l10n.buttonCancel),
         ),
-        actions: [
-          TextButton(
-              onPressed: () async {
-                context.pop();
-              },
-              child: const Text("Cancelar")),
-          FilledButton(
-              onPressed: () async {
-                setState(() {
-                  loading = true;
-                });
-                await contactService.update(contact);
-                setState(() {
-                  loading = false;
-                });
-                context.pop(true);
-              },
-              child: const Text("Salvar")),
-        ]);
+        FilledButton(
+          onPressed: () async {
+            setState(() => loading = true);
+            await contactService.update(contact);
+            setState(() => loading = false);
+            context.pop(true);
+          },
+          child: Text(l10n.buttonSave),
+        ),
+      ],
+    );
   }
 }
 
@@ -191,63 +185,55 @@ class _AddContactState extends State<AddContact> {
   String name = "";
   Location? location;
   bool loading = false;
-  LocationService locationService = LocationService();
+  final locationService = LocationService();
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: const InputDecoration(label: Text("Nome")),
-              onChanged: (value) {
-                name = value;
-              },
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            decoration: InputDecoration(label: Text(l10n.addContactLabelName)),
+            onChanged: (v) => name = v,
+          ),
+          const SizedBox(height: 16),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.shade500),
+              borderRadius: BorderRadius.circular(4),
             ),
-            const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade500),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: DebouncedSearchBar<Location>(
-                onResultSelected: (result){
-                  location = result;
-                },
-                searchFunction: (query){
-                  return locationService.searchLocation(query);
-                },
-                titleBuilder:(result) {
-                  return Text(result.address);
-                },
-                hintText: "Localização",
-                
-              ),
-              
-            )
-          ],
+            child: DebouncedSearchBar<Location>(
+              onResultSelected: (result) => location = result,
+              searchFunction: (q) => locationService.searchLocation(q),
+              titleBuilder: (r) => Text(r.address),
+              hintText: l10n.addContactHintLocation,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => context.pop(),
+          child: Text(l10n.buttonCancel),
         ),
-        actions: [
-          TextButton(
-              onPressed: () async {
-                context.pop();
-              },
-              child: const Text("Cancelar")),
-          FilledButton(
-              onPressed: () async {
-                setState(() {
-                  loading = true;
-                });
-                Contact contact = Contact(name: name, address: location!.address, latitude: location!.latitude, longitude: location!.longitude);
-                print(contact);
-                await contactService.insert(contact);
-                setState(() {
-                  loading = false;
-                });
-                context.pop(true);
-              },
-              child: const Text("Salvar")),
-        ]);
+        FilledButton(
+          onPressed: () async {
+            setState(() => loading = true);
+            final c = Contact(
+              name: name,
+              address: location!.address,
+              latitude: location!.latitude,
+              longitude: location!.longitude,
+            );
+            await contactService.insert(c);
+            setState(() => loading = false);
+            context.pop(true);
+          },
+          child: Text(l10n.buttonSave),
+        ),
+      ],
+    );
   }
 }
