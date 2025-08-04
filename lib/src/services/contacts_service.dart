@@ -43,7 +43,7 @@ class Contact {
   }
 
   GravidadeAlagamento? alagamentoMaisProximo(List<PrevisaoAlagamento> previsoes) {
-    const raioLimite = 50.0; // metros
+    const raioLimite = 100.0; // metros
 
     final pesos = {
       GravidadeAlagamento.baixa: 1,

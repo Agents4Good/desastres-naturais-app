@@ -39,7 +39,7 @@ final class ForecastMongoRepositoryProvider extends $NotifierProvider<
 }
 
 String _$forecastMongoRepositoryHash() =>
-    r'5f50c3a4a1a12d5162e1d86da43fd102782f21ff';
+    r'5b3cc6d49ee70386fce7707d660a5450ab4276f8';
 
 abstract class _$ForecastMongoRepository
     extends $Notifier<ForecastMongoRepository> {
