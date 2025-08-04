@@ -179,6 +179,10 @@ abstract class AppLocalizations {
   /// **'Execution Date\n{date}'**
   String executionDate(Object date);
 
+  String get dateFormatUpToDay;
+
+  String get dateFormatFull;
+
   /// No description provided for @notificationsError.
   ///
   /// In en, this message translates to:

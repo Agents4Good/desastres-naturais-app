@@ -10,7 +10,7 @@ import 'package:aguas_da_borborema/src/features/model_management/presentation/se
 import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, this.model = Model.gemma3Gpu_1B});
+  const ChatScreen({super.key, this.model = Model.gemma3nGpu_2B});
 
   final Model model;
 
@@ -128,9 +128,9 @@ class ChatScreenState extends State<ChatScreen> {
       body: Stack(children: [
         Center(
           child: Image.asset(
-            'assets/gota_complexa_new_bg.png',
-            width: 300,
-            height: 300,
+            'assets/gota_complexa_new_bg_no_text.png',
+            width: 200,
+            height: 200,
           ),
         ),
         _isModelInitialized

@@ -55,7 +55,14 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
 
     List<PrevisaoAlagamentoCompleta> previsoesCompletas = [];
   
-    await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', DateTime.now().subtract(const Duration(days: 7)))).forEach((json) {
+    final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+
+    final comparisonDate = DateTime.now().subtract(const Duration(days: 7));
+
+    // Format the date into the required string
+    final comparisonDateString = formatter.format(comparisonDate);
+
+    await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', comparisonDateString)).forEach((json) {
       previsoesCompletas.add(PrevisaoAlagamentoCompleta.fromJson(json));
     });
     await db.close();

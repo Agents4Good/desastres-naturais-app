@@ -68,6 +68,7 @@ class LastWeekNotificationsController extends _$LastWeekNotificationsController 
         previsoesIntermediarias[dataExecucaoPrevisao] = [PrevisaoNotificao(dataPrevisao)];
         dataParaIndice[dataPrevisao] = 0;
       } else if (!dataParaIndice.containsKey(dataPrevisao)) {
+        previsoesIntermediarias[dataExecucaoPrevisao]!.add(PrevisaoNotificao(dataPrevisao));
         dataParaIndice[dataPrevisao] = previsoesIntermediarias[dataExecucaoPrevisao]!.length - 1;
       }
     

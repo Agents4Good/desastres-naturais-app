@@ -108,7 +108,7 @@ class DeleteContact extends StatelessWidget {
             await contactService.delete(id);
             context.pop(true);
           },
-          child: Text(l10n.buttonSave),
+          child: Text(l10n.modelDelete),
         ),
       ],
     );

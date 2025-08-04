@@ -57,6 +57,12 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get dateFormatUpToDay => 'dd/MM/y';
+
+  @override
+  String get dateFormatFull => 'dd/MM/yyyy HH:mm:ss';
+
+  @override
   String notificationsError(Object error) {
     return 'Erro ao carregar notificações: $error';
   }

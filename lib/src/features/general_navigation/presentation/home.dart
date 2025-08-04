@@ -26,113 +26,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final l10n = AppLocalizations.of(context)!;
     final languageController = ref.watch(languageControllerProvider);
 
-    // cards grandes
-    var candidate1 = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _NavigationCard(
-          title: l10n.navChat,
-          subtitle: l10n.homeChatSubtitle,
-          icon: Icons.chat,
-          color: Colors.blue,
-          onTap: () => context.goNamed(AppRoute.chat.name),
-        ),
-        _NavigationCard(
-          title: l10n.navMap,
-          subtitle: l10n.homeMapSubtitle,
-          icon: Icons.map_outlined,
-          color: Colors.blue,
-          onTap: () => context.goNamed(AppRoute.map.name),
-        ),
-        _NavigationCard(
-          title: l10n.navForecast,
-          subtitle: l10n.homeForecastSubtitle,
-          icon: Icons.cloudy_snowing,
-          color: Colors.blue,
-          onTap: () => context.goNamed(AppRoute.forecast.name),
-        ),
-        _NavigationCard(
-          title: l10n.navContacts,
-          subtitle: l10n.homeContactsSubtitle,
-          icon: Icons.people,
-          color: Colors.blue,
-          onTap: () => context.goNamed(AppRoute.contacts.name),
-        ),
-        _NavigationCard(
-          title: l10n.navSettings,
-          subtitle: l10n.homeSettingsSubtitle,
-          icon: Icons.settings,
-          color: Colors.blue,
-          onTap: () => context.goNamed(AppRoute.settings.name),
-        ),
-        // **Novo card de idioma**
-        _NavigationCard(
-          title: 'Language',
-          subtitle: languageController.isEnglish ? 'EN' : 'PT', // mostra EN quando inglês ativo
-          icon: Icons.language,
-          color: Colors.blue, // mesma cor dos outros
-          onTap: () {
-            ref.read(languageControllerProvider).toggleLanguage();
-          },
-        ),
-      ],
-    );
-
-    // cards pequenos
-    var candidate2 = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        GridView.count(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: [
-            _SmallNavigationCard(
-              title: l10n.navChat,
-              icon: Icons.chat,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.chat.name),
-            ),
-            _SmallNavigationCard(
-              title: l10n.navMap,
-              icon: Icons.map_outlined,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.map.name),
-            ),
-            _SmallNavigationCard(
-              title: l10n.navForecast,
-              icon: Icons.cloudy_snowing,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.forecast.name),
-            ),
-            _SmallNavigationCard(
-              title: l10n.navContacts,
-              icon: Icons.people,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.contacts.name),
-            ),
-            _SmallNavigationCard(
-              title: l10n.navSettings,
-              icon: Icons.settings,
-              color: Colors.blue,
-              onTap: () => context.goNamed(AppRoute.settings.name),
-            ),
-            // **Novo small card de idioma**
-            _SmallNavigationCard(
-              title: languageController.isEnglish ? 'EN' : 'PT',
-              icon: Icons.language,
-              color: Colors.blue, // mesma cor dos outros
-              onTap: () {
-                ref.read(languageControllerProvider).toggleLanguage();
-              },
-            ),
-          ],
-        ),
-      ],
-    );
-
     return Scaffold(
       backgroundColor: const Color(0xFF0b2351),
       body: Padding(
@@ -142,10 +35,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: alternateOption,
-                  child: Text(l10n.buttonToggleView),
-                ),
                 const SizedBox(height: 12),
                 const Icon(
                   Icons.chat_bubble_outline,
@@ -169,60 +58,59 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
-                if (option) candidate1,
-                if (!option) candidate2,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _NavigationCard(
+                      title: l10n.navChat,
+                      subtitle: l10n.homeChatSubtitle,
+                      icon: Icons.chat,
+                      color: Colors.blue,
+                      onTap: () => context.goNamed(AppRoute.chat.name),
+                    ),
+                    _NavigationCard(
+                      title: l10n.navMap,
+                      subtitle: l10n.homeMapSubtitle,
+                      icon: Icons.map_outlined,
+                      color: Colors.blue,
+                      onTap: () => context.goNamed(AppRoute.map.name),
+                    ),
+                    _NavigationCard(
+                      title: l10n.navForecast,
+                      subtitle: l10n.homeForecastSubtitle,
+                      icon: Icons.cloudy_snowing,
+                      color: Colors.blue,
+                      onTap: () => context.goNamed(AppRoute.forecast.name),
+                    ),
+                    _NavigationCard(
+                      title: l10n.navContacts,
+                      subtitle: l10n.homeContactsSubtitle,
+                      icon: Icons.people,
+                      color: Colors.blue,
+                      onTap: () => context.goNamed(AppRoute.contacts.name),
+                    ),
+                    _NavigationCard(
+                      title: l10n.navSettings,
+                      subtitle: l10n.homeSettingsSubtitle,
+                      icon: Icons.settings,
+                      color: Colors.blue,
+                      onTap: () => context.goNamed(AppRoute.settings.name),
+                    ),
+                    // **Novo card de idioma**
+                    _NavigationCard(
+                      title: 'Language',
+                      subtitle: languageController.isEnglish ? 'EN' : 'PT', // mostra EN quando inglês ativo
+                      icon: Icons.language,
+                      color: Colors.blue, // mesma cor dos outros
+                      onTap: () {
+                        ref.read(languageControllerProvider).toggleLanguage();
+                      },
+                    ),
+                  ],
+                )
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SmallNavigationCard extends StatelessWidget {
-  const _SmallNavigationCard({
-    required this.title,
-    required this.icon,
-    required this.color,
-    required this.onTap,
-  });
-
-  final String title;
-  final IconData icon;
-  final Color color;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: const Color(0xFF1a3a5c),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(icon, color: color, size: 24),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

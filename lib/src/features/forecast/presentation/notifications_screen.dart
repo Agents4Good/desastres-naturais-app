@@ -30,7 +30,7 @@ class NotificacoesScreen extends ConsumerWidget {
 
   Widget buildPrevisaoItem(BuildContext context, PrevisaoNotificao previsao) {
     final l10n = AppLocalizations.of(context)!;
-    final dateStr = DateFormat("dd/MM/y").format(previsao.dataPrevisao);
+    final dateStr = DateFormat(l10n.dateFormatUpToDay).format(previsao.dataPrevisao);
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 10),
       child: Column(

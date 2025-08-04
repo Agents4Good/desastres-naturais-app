@@ -9,6 +9,7 @@ import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart
 import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
+import 'package:aguas_da_borborema/src/features/forecast/presentation/notifications_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
@@ -54,24 +55,8 @@ GoRouter goRouter(Ref ref) {
             path: 'chat',
             name: AppRoute.chat.name,
             builder: (context, state) {
-              // final modelName = state.pathParameters['model_name']!;
-              // return ChatScreen(modelName: modelName);
-              // return NotImplementedScreen();
               return const ModelSelectionScreen();
             },
-            // routes: [
-            // GoRoute(
-            //   path: 'list_model',
-            //   name: AppRoute.leaveReview.name,
-            //   pageBuilder: (context, state) {
-            //     final productId = state.pathParameters['id']!;
-            //     return MaterialPage(
-            //       fullscreenDialog: true,
-            //       child: LeaveReviewScreen(productId: productId),
-            //     );
-            //   },
-            // ),
-            // ],
           ),
           GoRoute(
             path: 'map',
@@ -84,7 +69,7 @@ GoRouter goRouter(Ref ref) {
             path: 'forecast',
             name: AppRoute.forecast.name,
             builder: (context, state) {
-              return const NotImplementedScreen();
+              return const NotificacoesScreen();
             },
           ),
           GoRoute(
@@ -101,72 +86,6 @@ GoRouter goRouter(Ref ref) {
               return const ContactsScreen();
             },
           ),
-
-          // GoRoute(
-          //   path: 'product/:id',
-          //   name: AppRoute.product.name,
-          //   builder: (context, state) {
-          //     final productId = state.pathParameters['id']!;
-          //     return ProductScreen(productId: productId);
-          //   },
-          //   routes: [
-          //     GoRoute(
-          //       path: 'review',
-          //       name: AppRoute.leaveReview.name,
-          //       pageBuilder: (context, state) {
-          //         final productId = state.pathParameters['id']!;
-          //         return MaterialPage(
-          //           fullscreenDialog: true,
-          //           child: LeaveReviewScreen(productId: productId),
-          //         );
-          //       },
-          //     ),
-          //   ],
-          // ),
-          // GoRoute(
-          //   path: 'cart',
-          //   name: AppRoute.cart.name,
-          //   pageBuilder: (context, state) => const MaterialPage(
-          //     fullscreenDialog: true,
-          //     child: ShoppingCartScreen(),
-          //   ),
-          //   routes: [
-          //     GoRoute(
-          //       path: 'checkout',
-          //       name: AppRoute.checkout.name,
-          //       pageBuilder: (context, state) => const MaterialPage(
-          //         fullscreenDialog: true,
-          //         child: CheckoutScreen(),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // GoRoute(
-          //   path: 'orders',
-          //   name: AppRoute.orders.name,
-          //   pageBuilder: (context, state) => const MaterialPage(
-          //     fullscreenDialog: true,
-          //     child: OrdersListScreen(),
-          //   ),
-          // ),
-          // GoRoute(
-          //   path: 'account',
-          //   name: AppRoute.account.name,
-          //   pageBuilder: (context, state) => const MaterialPage(
-          //     fullscreenDialog: true,
-          //     child: AccountScreen(),
-          //   ),
-          // ),
-          // GoRoute(
-          //   path: 'signIn',
-          //   name: AppRoute.signIn.name,
-          //   pageBuilder: (context, state) => const MaterialPage(
-          //     fullscreenDialog: true,
-          //     child: EmailPasswordSignInScreen(
-          //       formType: EmailPasswordSignInFormType.signIn,
-          //     ),
-          //   ),
-          // ),
         ])
   ];
   return GoRouter(
