@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -38,6 +41,51 @@ class Contact {
   String toString() {
     return 'Contact(name: $name, address: $address, latitude: $latitude, longitude: $longitude)';
   }
+
+  GravidadeAlagamento? alagamentoMaisProximo(List<PrevisaoAlagamento> previsoes) {
+    const raioLimite = 50.0; // metros
+
+    final pesos = {
+      GravidadeAlagamento.baixa: 1,
+      GravidadeAlagamento.media: 2,
+      GravidadeAlagamento.alta: 3,
+    };
+
+    GravidadeAlagamento? gravidadeMaisGrave;
+
+    for (final previsao in previsoes) {
+      final latP = previsao.latitude;
+      final lonP = previsao.longitude;
+      final gravidade = previsao.gravidade;
+
+      final distancia = _calcularDistancia(latitude, longitude, latP, lonP);
+      print('Distância: $distancia');
+
+      if (distancia <= raioLimite) {
+        if (gravidadeMaisGrave == null ||
+            pesos[gravidade]! > pesos[gravidadeMaisGrave]!) {
+          gravidadeMaisGrave = gravidade;
+        }
+      }
+    }
+
+    return gravidadeMaisGrave;
+  }
+
+  double _calcularDistancia(double lat1, double lon1, double lat2, double lon2) {
+    const raioTerra = 6371000; // metros
+    final dLat = _grausParaRad(lat2 - lat1);
+    final dLon = _grausParaRad(lon2 - lon1);
+    final a = 
+        (sin(dLat / 2) * sin(dLat / 2)) +
+        cos(_grausParaRad(lat1)) *
+            cos(_grausParaRad(lat2)) *
+            (sin(dLon / 2) * sin(dLon / 2));
+    final c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    return raioTerra * c;
+  }
+
+  double _grausParaRad(double graus) => graus * pi / 180;
 
 }
 
