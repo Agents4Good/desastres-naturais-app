@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:aguas_da_borborema/src/features/chat/presentation/chat_message.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +33,28 @@ class GemmaInputFieldState extends State<GemmaInputField> {
   @override
   void initState() {
     super.initState();
-    _gemma = GemmaLocalService(widget.chat!);
-    _processMessages();
+    // _gemma = GemmaLocalService(widget.chat!);
+    GemmaLocalService.create(widget.chat!).then((service) {
+      _gemma = service;
+      _processMessages();
+    });
   }
 
   void _processMessages() {
-    _subscription = _gemma?.processMessageAsync(widget.messages.last).listen(
+    final locale = window.locale;
+    final isEn = locale.languageCode == 'en';
+
+    final originalMessage = widget.messages.last;
+    final messageText = StringBuffer();
+    messageText.writeln(isEn
+        ? 'User request:\n${originalMessage.text}'
+        : 'Solicitação do usuário:\n${originalMessage.text}');
+
+    final messageWithContext = Message(
+          isUser: originalMessage.isUser,
+          text: messageText.toString());
+    
+    _subscription = _gemma?.processMessageAsync(messageWithContext).listen(
       (String token) {
         if (!mounted) return;
         setState(() {

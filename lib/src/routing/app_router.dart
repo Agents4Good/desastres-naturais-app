@@ -6,6 +6,7 @@ import 'package:aguas_da_borborema/src/features/general_navigation/presentation/
 import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
 import 'package:aguas_da_borborema/src/features/contacts/contacts_screen.dart';
 import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
+import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
 import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -49,7 +50,7 @@ GoRouter goRouter(Ref ref) {
         builder: (context, state) => const HomeScreen(),
         routes: [
           GoRoute(
-            // path: 'chat/:model_name',
+
             path: 'chat',
             name: AppRoute.chat.name,
             builder: (context, state) {

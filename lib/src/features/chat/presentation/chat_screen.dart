@@ -51,11 +51,11 @@ class ChatScreenState extends State<ChatScreen> {
     }
 
     final model = await _gemma.createModel(
-      modelType: widget.model.modelType,
-      preferredBackend: widget.model.preferredBackend,
-      maxTokens: 1024,
-      supportImage: widget.model.supportImage,
-      maxNumImages: widget.model.maxNumImages,
+      modelType: super.widget.model.modelType,
+      preferredBackend: super.widget.model.preferredBackend,
+      maxTokens: 4096,
+      supportImage: widget.model.supportImage, // Pass image support
+      maxNumImages: widget.model.maxNumImages, // Maximum 4 images for multimodal models
     );
 
     chat = await model.createChat(
