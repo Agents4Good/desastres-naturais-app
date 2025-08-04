@@ -58,8 +58,6 @@ dependencies:
   location_picker_flutter_map: ^1.1.0
   geolocator: ^14.0.2
   intl: ^0.20.2
-  flutter_localizations:
-    sdk: flutter
 
 dev_dependencies:
   integration_test:
@@ -93,9 +91,6 @@ flutter:
   assets:
     - assets/
     - .env
-    - assets/PlanodeContingencia-CampinaGrande2023.txt
-    - assets/PlanodeContingencia-CampinaGrande2023-Completo-EN.txt
-    - assets/PlanodeContingencia-CampinaGrande2023-Completo-PT.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
