@@ -36,17 +36,17 @@ class PrevisaoAlagamento {
     }
     GravidadeAlagamento gravidadeObj;
     switch(gravidade.toLowerCase()) {
-      case 'baixa':
+      case 'leve':
         gravidadeObj = GravidadeAlagamento.baixa;
         break;
-      case 'media':
+      case 'moderado':
         gravidadeObj = GravidadeAlagamento.media;
         break;
-      case 'alta':
+      case 'grave':
         gravidadeObj = GravidadeAlagamento.alta;
         break;
       default:
-        throw FormatException('Invalid "gravidade" value, expected to be one of "baixa", "media", or "alta" in $latitude');
+        throw FormatException('Invalid "gravidade" value, expected to be one of "leve", "moderada", or "grave" in $latitude');
     }
     
     return PrevisaoAlagamento(
