@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:image_picker/image_picker.dart';
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 class ChatInputField extends StatefulWidget {
   final ValueChanged<Message> handleSubmitted;
@@ -52,11 +53,12 @@ class ChatInputFieldState extends State<ChatInputField> {
 
   Future<void> _pickImage() async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final l10n = AppLocalizations.of(context)!;
+
     if (kIsWeb) {
-      // Image selection not supported on web yet
       scaffoldMessenger.showSnackBar(
-        const SnackBar(
-          content: Text('Seleção de imagem ainda não é suportada na web'),
+        SnackBar(
+          content: Text(l10n.imageSelectionNotSupportedWeb),
         ),
       );
       return;
@@ -79,19 +81,20 @@ class ChatInputFieldState extends State<ChatInputField> {
       }
     } catch (e) {
       scaffoldMessenger.showSnackBar(
-        SnackBar(content: Text('Error na seleção da imagem: $e')),
+        SnackBar(
+          content: Text('Error selecting image: $e'),
+        ),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Column(
       children: [
-        // Selected image preview
-        if (_selectedImageBytes != null) _buildImagePreview(),
-
-        // Input field
+        if (_selectedImageBytes != null) _buildImagePreview(l10n),
         IconTheme(
           data: IconThemeData(color: Theme.of(context).hoverColor),
           child: Container(
@@ -102,7 +105,6 @@ class ChatInputFieldState extends State<ChatInputField> {
             ),
             child: Row(
               children: <Widget>[
-                // Add image button
                 if (widget.supportsImages && !kIsWeb)
                   IconButton(
                     icon: Icon(
@@ -112,7 +114,7 @@ class ChatInputFieldState extends State<ChatInputField> {
                           : Colors.white70,
                     ),
                     onPressed: _pickImage,
-                    tooltip: 'Adicionar imagem',
+                    tooltip: l10n.addImageTooltip,
                   ),
                 Flexible(
                   child: TextField(
@@ -121,8 +123,8 @@ class ChatInputFieldState extends State<ChatInputField> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: _selectedImageBytes != null
-                          ? 'Adicionar descrição a imagem...'
-                          : 'Enviar mensagem',
+                          ? l10n.addDescriptionToImage
+                          : l10n.sendMessage,
                       hintStyle: const TextStyle(color: Colors.white54),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
@@ -133,8 +135,6 @@ class ChatInputFieldState extends State<ChatInputField> {
                     maxLines: null,
                   ),
                 ),
-
-                // Send button
                 IconButton(
                   icon: const Icon(Icons.send, color: Colors.white70),
                   onPressed: () => _handleSubmitted(_textController.text),
@@ -147,7 +147,7 @@ class ChatInputFieldState extends State<ChatInputField> {
     );
   }
 
-  Widget _buildImagePreview() {
+  Widget _buildImagePreview(AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       padding: const EdgeInsets.all(8.0),
@@ -157,7 +157,6 @@ class ChatInputFieldState extends State<ChatInputField> {
       ),
       child: Row(
         children: [
-          // Image preview
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.memory(
@@ -168,14 +167,12 @@ class ChatInputFieldState extends State<ChatInputField> {
             ),
           ),
           const SizedBox(width: 12),
-
-          // Image information
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _selectedImageName ?? 'Imagem',
+                  _selectedImageName ?? l10n.imageLabel,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
@@ -194,12 +191,10 @@ class ChatInputFieldState extends State<ChatInputField> {
               ],
             ),
           ),
-
-          // Delete button
           IconButton(
             icon: const Icon(Icons.close, color: Colors.white70),
             onPressed: _clearImage,
-            tooltip: 'Remover imagem',
+            tooltip: l10n.removeImageTooltip,
           ),
         ],
       ),

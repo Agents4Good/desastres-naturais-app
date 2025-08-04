@@ -57,7 +57,11 @@ dependencies:
   flutter_dotenv: ^5.2.1
   location_picker_flutter_map: ^1.1.0
   geolocator: ^14.0.2
-  intl: ^0.20.2
+  intl: any
+  #flutter_localization: ^0.3.3
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.5
 
 dev_dependencies:
   integration_test:
@@ -86,6 +90,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
