@@ -31,7 +31,7 @@ class TimerService extends StateNotifier<bool> {
   }
 
   void startTimer() {
-    const intervalo = Duration(minutes: 15);
+    const intervalo = Duration(minutes: 4);
     _timer = Timer.periodic(intervalo, (timer) async {
       final locale = window.locale;
       final isEn = locale.languageCode == 'en';
@@ -45,7 +45,7 @@ class TimerService extends StateNotifier<bool> {
       final contactsString = StringBuffer();
       for (final contact in contacts) {
         // Assuming each contact has a method to check flood risk
-        GravidadeAlagamento? risk = contact.alagamentoMaisProximo(previsaoCompleta);
+        GravidadeAlagamento? risk = contact.alagamentoMaisProximo(previsaoCompleta.previsoes);
         if (risk != null) {
           if (isEn) {
             contactsString.writeln('The contact \'${contact.name}\' runs a risk of ${risk.name} severity');

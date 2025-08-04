@@ -16,12 +16,14 @@ Future<void> startBackgroundService() async {
     enableWifiLock: true,
   );
 
-  final hasPermissions = await FlutterBackground.hasPermissions;
-  if (!hasPermissions) {
-    await FlutterBackground.initialize(androidConfig: androidConfig);
+  // var hasPermissions = await FlutterBackground.hasPermissions;
+  // if (!hasPermissions) {
+    
+  // }
+  var hasPermissions = await FlutterBackground.initialize(androidConfig: androidConfig);
+  if(hasPermissions) {
+    await FlutterBackground.enableBackgroundExecution();
   }
-
-  await FlutterBackground.enableBackgroundExecution();
 }
 
 void main() async {

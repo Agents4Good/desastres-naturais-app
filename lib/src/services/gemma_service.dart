@@ -24,17 +24,31 @@ class GemmaLocalService {
   }
 
   Future<String> _getContactsAndRisk(bool isEn) async {
+    final initialText = StringBuffer();
     final contactsAndRisk = StringBuffer();
 
     // Loads contacts from database
     final contacts = await contactService.getContacts();
-    contactsAndRisk.writeln(isEn
-        ? 'User contacts (name and address):'
-        : 'Contatos do usuário (nome e endereço):');
-    for (final c in contacts) {
-      contactsAndRisk.writeln('- ${c.name}, ${c.address}');
+    
+    final tomorrow = DateTime.now().add(const Duration(days: 1));
+
+    
+    // forecastService.fetchCurrentPrevisaoCompletaUltimosTresDias(tomorrow);
+
+    // for (final c in contacts) {
+    //   contactsAndRisk.writeln('- ${c.name}, ${c.address}: ${c.alagamentoMaisProximo(previsoes)?.name ?? 'No risk'}');
+    // }
+    if (contactsAndRisk.isEmpty) {
+      initialText.writeln(isEn
+          ? 'No saved contacts found.'
+          : 'Nenhum contato salvo encontrado.');
+    } else {
+      initialText.writeln(isEn
+          ? 'User contacts (name and address):\n'
+          : 'Contatos do usuário (nome e endereço):\n');
     }
-    return '$contactsAndRisk';
+
+    return '$initialText$contactsAndRisk';
   }
 
   Future<void> addSystemPrompt() async {
