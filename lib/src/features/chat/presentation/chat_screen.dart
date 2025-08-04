@@ -7,6 +7,7 @@ import 'package:aguas_da_borborema/src/common_widgets/loading_widget.dart';
 import 'package:aguas_da_borborema/src/constants/available_models.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, this.model = Model.gemma3Gpu_1B});
@@ -38,8 +39,6 @@ class ChatScreenState extends State<ChatScreen> {
 
   Future<void> _initializeModel() async {
     if (!await _gemma.modelManager.isModelInstalled) {
-      // var path1 = await ();
-
       var path = widget.model.url;
       if (!kIsWeb) {
         if (widget.model.localModel) {
@@ -48,7 +47,6 @@ class ChatScreenState extends State<ChatScreen> {
           path = '${(await getApplicationDocumentsDirectory()).path}/${widget.model.filename}';
         }
       }
- 
       await _gemma.modelManager.setModelPath(path);
     }
 
@@ -61,12 +59,12 @@ class ChatScreenState extends State<ChatScreen> {
     );
 
     chat = await model.createChat(
-      temperature: super.widget.model.temperature,
+      temperature: widget.model.temperature,
       randomSeed: 1,
-      topK: super.widget.model.topK,
-      topP: super.widget.model.topP,
+      topK: widget.model.topK,
+      topP: widget.model.topP,
       tokenBuffer: 256,
-      supportImage: widget.model.supportImage, // Image support in chat
+      supportImage: widget.model.supportImage,
     );
 
     setState(() {
@@ -76,6 +74,8 @@ class ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: const Color(0xFF0b2351),
       appBar: AppBar(
@@ -86,26 +86,26 @@ class ChatScreenState extends State<ChatScreen> {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute<void>(
-                builder: (context) => const ModelSelectionScreen(),
+                builder: (_) => const ModelSelectionScreen(),
               ),
-                  (route) => false,
+              (route) => false,
             );
           },
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Águas da Borborema',
-              style: TextStyle(fontSize: 18),
+            Text(
+              l10n.appTitle,
+              style: const TextStyle(fontSize: 18),
               softWrap: true,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
             if (chat?.supportsImages == true)
-              const Text(
-                'Suporte a imagem ativado',
-                style: TextStyle(
+              Text(
+                l10n.imageSupportEnabled,
+                style: const TextStyle(
                   fontSize: 12,
                   color: Colors.green,
                   fontWeight: FontWeight.normal,
@@ -114,7 +114,6 @@ class ChatScreenState extends State<ChatScreen> {
           ],
         ),
         actions: [
-          // Image support indicator
           if (chat?.supportsImages == true)
             const Padding(
               padding: EdgeInsets.only(right: 16.0),
@@ -136,33 +135,30 @@ class ChatScreenState extends State<ChatScreen> {
         ),
         _isModelInitialized
             ? Column(children: [
-          if (_error != null) _buildErrorBanner(_error!),
-          if (chat?.supportsImages == true && _messages.isEmpty)
-            _buildImageSupportInfo(),
-          Expanded(
-            child: ChatListWidget(
-              chat: chat,
-              gemmaHandler: (message) {
-                setState(() {
-                  _messages.add(message);
-                });
-              },
-              humanHandler: (message) { // Now accepts Message instead of String
-                setState(() {
-                  _error = null;
-                  _messages.add(message);
-                });
-              },
-              errorHandler: (err) {
-                setState(() {
-                  _error = err;
-                });
-              },
-              messages: _messages,
-            ),
-          )
-        ])
-            : const LoadingWidget(message: 'Carregando o modelo'),
+                if (_error != null)
+                  _buildErrorBanner(l10n.errorBannerMessage(_error!)),
+                if (chat?.supportsImages == true && _messages.isEmpty)
+                  _buildImageSupportInfo(l10n),
+                Expanded(
+                  child: ChatListWidget(
+                    chat: chat,
+                    gemmaHandler: (message) {
+                      setState(() => _messages.add(message));
+                    },
+                    humanHandler: (message) {
+                      setState(() {
+                        _error = null;
+                        _messages.add(message);
+                      });
+                    },
+                    errorHandler: (err) {
+                      setState(() => _error = err);
+                    },
+                    messages: _messages,
+                  ),
+                )
+              ])
+            : LoadingWidget(message: l10n.loadingModel),
       ]),
     );
   }
@@ -180,14 +176,14 @@ class ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildImageSupportInfo() {
+  Widget _buildImageSupportInfo(AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.all(16.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: const Color(0xFF1a3a5c),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.green.withValues(alpha: 0.3)),
+        border: Border.all(color: Colors.green.withOpacity(0.3)),
       ),
       child: Row(
         children: [
@@ -201,17 +197,17 @@ class ChatScreenState extends State<ChatScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'O modelo suporta imagens',
-                  style: TextStyle(
+                Text(
+                  l10n.imageSupportInfoTitle,
+                  style: const TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 Text(
-                  'Uso o botão 📷 para enviar imagens',
+                  l10n.imageSupportInfoBody,
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.7),
+                    color: Colors.white.withOpacity(0.7),
                     fontSize: 12,
                   ),
                 ),

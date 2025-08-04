@@ -1,6 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,7 +23,7 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
     final String mongodbPort = dotenv.env['MONGODB_PORT'] ?? '27017';
     final String mongodbDBName = dotenv.env['MONGODB_DB_NAME'] ?? 'n8n';
 
-    final String connectionString = "mongodb://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/$mongodbDBName?authSource=admin&ssl=false";
+    final String connectionString = "mongodb+srv://$mongodbUser:$mongodbPass@$mongodbHost:$mongodbPort/$mongodbDBName?authSource=admin&retryWrites=true&w=majority&appName=natural-disasters";
     return await Db.create(connectionString);
   }
   // Example method to fetch flood predictions
@@ -32,7 +33,14 @@ class ForecastMongoRepository extends _$ForecastMongoRepository {
 
     List<PrevisaoAlagamentoCompleta> previsoesCompletas = [];
   
-    await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', DateTime.now().subtract(const Duration(days: 3)))).forEach((json) {
+    final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+
+    final comparisonDate = DateTime.now().subtract(const Duration(days: 3));
+
+    // Format the date into the required string
+    final comparisonDateString = formatter.format(comparisonDate);
+
+    await db.collection(mongodbCollection).find(where.gt('data_execucao_previsao', comparisonDateString)).forEach((json) {
       previsoesCompletas.add(PrevisaoAlagamentoCompleta.fromJson(json));
     });
     await db.close();

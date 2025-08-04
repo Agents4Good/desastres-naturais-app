@@ -1,6 +1,9 @@
+import 'dart:core';
+
 import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/app_layout.dart';
 import 'package:aguas_da_borborema/src/features/general_navigation/presentation/home.dart';
+import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
 import 'package:aguas_da_borborema/src/features/contacts/contacts_screen.dart';
 import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
 import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
@@ -47,12 +50,14 @@ GoRouter goRouter(Ref ref) {
         builder: (context, state) => const HomeScreen(),
         routes: [
           GoRoute(
+
             path: 'chat',
             name: AppRoute.chat.name,
             builder: (context, state) {
               // final modelName = state.pathParameters['model_name']!;
               // return ChatScreen(modelName: modelName);
-              return ModelSelectionScreen();
+              // return NotImplementedScreen();
+              return const ModelSelectionScreen();
             },
             // routes: [
             // GoRoute(

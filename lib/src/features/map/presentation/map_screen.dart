@@ -7,19 +7,18 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
-
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
 class MapScreen extends ConsumerWidget {
-  const MapScreen({
-    super.key,
-  });
+  const MapScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(forecastNextDayControllerProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mapa de Previsão'),
+        title: Text(l10n.navMap), // Usando chave 'navMap' = 'Mapa'
         backgroundColor: const Color(0xFF0b2351),
         actions: [
           IconButton(
@@ -35,21 +34,16 @@ class MapScreen extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Os pontos em destaque sofreram alagamentos!',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.center,
-                  ),
-                ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              child: Text(
+                l10n.highlightedFloodPoints, // Chave internacionalizada aqui
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
             Container(
@@ -68,8 +62,7 @@ class MapScreen extends ConsumerWidget {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate:
-                          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                       subdomains: const ['a', 'b', 'c'],
                       userAgentPackageName: 'com.exemplo.aguasdaborborema',
                     ),
@@ -123,28 +116,28 @@ class MapScreen extends ConsumerWidget {
                 ),
               ),
             ),
-            const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.warning_rounded, color: Colors.green, size: 18),
-                    SizedBox(width: 1),
-                    Text('Gravidade Baixa;', style: TextStyle(color: Colors.white70), textAlign: TextAlign.center),
-                    Icon(Icons.warning_rounded, color: Colors.amber, size: 18),
-                    SizedBox(width: 1),
-                    Text('Gravidade Média;', style: TextStyle(color: Colors.white70), textAlign: TextAlign.center),
-                    Icon(Icons.warning_rounded, color: Colors.red, size: 18),
-                    SizedBox(width: 1),
-                    Text('Gravidade Alta', style: TextStyle(color: Colors.white70), textAlign: TextAlign.center),
-                  ],
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.warning_rounded, color: Colors.green, size: 18),
+                      const SizedBox(width: 1),
+                      Text(l10n.severityLow + ';', style: const TextStyle(color: Colors.white70), textAlign: TextAlign.center),
+                      const Icon(Icons.warning_rounded, color: Colors.amber, size: 18),
+                      const SizedBox(width: 1),
+                      Text(l10n.severityMedium + ';', style: const TextStyle(color: Colors.white70), textAlign: TextAlign.center),
+                      const Icon(Icons.warning_rounded, color: Colors.red, size: 18),
+                      const SizedBox(width: 1),
+                      Text(l10n.severityHigh, style: const TextStyle(color: Colors.white70), textAlign: TextAlign.center),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
           ],
         ),
       ),
@@ -152,14 +145,14 @@ class MapScreen extends ConsumerWidget {
   }
 
   Color _corGravidade(GravidadeAlagamento gravidade) {
-  switch (gravidade) {
-    case GravidadeAlagamento.baixa:
-      return Colors.green;
-    case GravidadeAlagamento.media:
-      return Colors.amber;
-    case GravidadeAlagamento.alta:
-      return Colors.red;
-  }
+    switch (gravidade) {
+      case GravidadeAlagamento.baixa:
+        return Colors.green;
+      case GravidadeAlagamento.media:
+        return Colors.amber;
+      case GravidadeAlagamento.alta:
+        return Colors.red;
+    }
   }
 
   Color _corContato(GravidadeAlagamento? gravidade) {
