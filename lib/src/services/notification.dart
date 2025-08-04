@@ -1,4 +1,9 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+// final notificationServiceProvider = Provider<NotificationService>((ref) {
+//   return NotificationService();
+// });
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _plugin =
@@ -32,7 +37,7 @@ class NotificationService {
     await _plugin.initialize(initializationSettings);
   }
 
-  static Future<void> showNotification() async {
+  static Future<void> showNotification(String message) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'Channel_id',
       'Channel_title',
@@ -46,8 +51,8 @@ class NotificationService {
 
     await _plugin.show(
       0,
-      'Notificação de Teste',
-      'Esta é uma notificação local de teste.',
+      'Alerta Aguas da Borborema',
+      message,
       notificationDetails,
     );
   }
