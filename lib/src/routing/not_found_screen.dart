@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:aguas_da_borborema/src/common_widgets/empty_placeholder_widget.dart';
+import 'package:aguas_da_borborema/l10n/app_localizations.dart';
 
-/// Simple not found screen used for 404 errors (page not found on web)
+/// Tela exibida quando a rota não é encontrada (404)
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(),
-      body: const EmptyPlaceholderWidget(
-        message: '404 - Página não encontrada!',
+      body: EmptyPlaceholderWidget(
+        message: l10n.error404,
       ),
     );
   }
