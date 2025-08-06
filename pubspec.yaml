@@ -1,4 +1,4 @@
-name: aguas_da_borborema
+name: pluvia
 description: "Aplicacao de assistencia a grupos impactados atraves do uso de LLM."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -6,6 +6,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
+  # sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -17,9 +19,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_background: ^1.2.0 
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
   equatable: ^2.0.3
   flutter_bloc: ^8.0.1
   flutter_gemma: ^0.9.0
+  flutter_local_notifications: ^19.3.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -30,9 +36,33 @@ dependencies:
   web: ^1.1.1
   path_provider: ^2.1.5
   shared_preferences: ^2.5.2
+  flutter_launcher_icons: ^0.14.4
 
   # Dependencies for working with images
   image_picker: ^1.0.4 # For selecting images on mobile devices
+
+  # Riverpod
+  flutter_riverpod: ^3.0.0-dev.16
+  riverpod_annotation: ^3.0.0-dev.16
+  # riverpod_sqflite: ^0.1.2
+  encrypt_shared_preferences: ^0.9.9
+
+  rxdart: ^0.28.0
+
+  # Go Router for routing
+  go_router: ^16.0.0
+
+  pigeon: ^26.0.0
+  sqflite: ^2.4.2
+  path: ^1.9.1
+  mongo_dart: ^0.10.5
+  flutter_dotenv: ^5.2.1
+  location_picker_flutter_map: ^1.1.0
+  geolocator: ^14.0.2
+  intl: ^0.20.2
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.5
 
 dev_dependencies:
   integration_test:
@@ -46,6 +76,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner: ^2.5.4
+  custom_lint: ^0.7.5
+  riverpod_generator: ^3.0.0-dev.16
+  riverpod_lint: ^3.0.0-dev.16
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -57,10 +91,15 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - .env
+    - assets/PlanodeContingencia-CampinaGrande2023.txt
+    - assets/PlanodeContingencia-CampinaGrande2023-Completo-EN.txt
+    - assets/PlanodeContingencia-CampinaGrande2023-Completo-PT.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
