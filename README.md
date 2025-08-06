@@ -1,4 +1,8 @@
-# PluvIA
+
+<p align="center">
+  <img width="445" height="385" alt="Screenshot from 2025-08-06 18-22-05" src="https://github.com/user-attachments/assets/db76f71c-f28f-4518-83d2-f3979fa0b032" />
+</p>
+
 
 > PluvIA is a fully offline-capable Flutter mobile app that brings advanced AI-driven chat, weather forecasting, contact management, flood-risk assessment, and custom notifications right to your pocket.
 
@@ -20,14 +24,13 @@
 ---
 ## Getting the APK 📱
 
+Enjoy PluvIA, fully built from source or via APK—entirely offline and powered by Gemma3Nano!
+
 Visit the **Releases** tab in this repository to download the latest `pluvia_vX.Y.Z.apk` and sideload it on your device:
 
 👉 [Releases](https://github.com/Agents4Good/PluvIA/releases)
 
 ---
-
-Enjoy PluvIA, fully built from source or via APK—entirely offline and powered by Gemma3Nano!
-
 ## Development
 
 To run the riverpod_generator code generation watch service run:
