@@ -342,6 +342,8 @@ abstract class AppLocalizations {
   /// **'Check out the latest forecasts!'**
   String get homeForecastSubtitle;
 
+  String get errorLoadingForecast;
+
   /// Subtitle for Contacts card
   ///
   /// In en, this message translates to:

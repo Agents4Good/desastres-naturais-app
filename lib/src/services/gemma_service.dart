@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
 import 'package:pluvia/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:pluvia/src/services/contacts_service.dart';
 import 'package:pluvia/src/features/forecast/application/forecast_service.dart';
@@ -85,10 +86,23 @@ class GemmaLocalService {
           ? 'Forecast for tomorrow ($dateStr):\n'
           : 'Previsão para amanhã ($dateStr):\n');
       for (var previsao in previsaoCompleta.previsoes) {
+        final previsaoGravity = StringBuffer();
+        switch(previsao.gravidade) {
+          case GravidadeAlagamento.baixa:
+            previsaoGravity.writeln(isEn ? 'low' : 'baixa');
+            break;
+          case GravidadeAlagamento.media:
+            previsaoGravity.writeln(isEn ? 'medium' : 'média');
+            break;
+          case GravidadeAlagamento.alta:
+            previsaoGravity.writeln(isEn ? 'high' : 'alta');
+            break;
+        }
+      
         previsoesBuffer.writeln(
           isEn
-              ? '- Endereço e risco do ponto de alagamento: ${previsao.endereco} (endereço) | ${previsao.gravidade} (risco)'
-              : '- Flood point address and risk: ${previsao.endereco} (address) | ${previsao.gravidade} (risk)',
+              ? '- Endereço e risco do ponto de alagamento: ${previsao.endereco} | Risco: $previsaoGravity'
+              : '- Flood point address and risk: ${previsao.endereco} | Risk: $previsaoGravity',
         );
       }
     }

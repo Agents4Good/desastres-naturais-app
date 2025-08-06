@@ -182,6 +182,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeForecastSubtitle => 'Check out the latest forecasts!';
 
   @override
+  String get errorLoadingForecast => 'Error loading forecasts';
+
+  @override
   String get homeContactsSubtitle => 'Access your contacts list.';
 
   @override

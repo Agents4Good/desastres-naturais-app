@@ -188,6 +188,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeForecastSubtitle => 'Cheque as últimas previsões!';
 
   @override
+  String get errorLoadingForecast => 'Erro ao carregar previsões';
+
+  @override
   String get homeContactsSubtitle => 'Acesse sua lista de contatos.';
 
   @override

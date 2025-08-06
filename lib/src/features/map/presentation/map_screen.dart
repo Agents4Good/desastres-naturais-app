@@ -116,7 +116,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
               ),
               error: (error, stack) => Padding(
                 padding: const EdgeInsets.all(28.0),
-                child: Text('Erro ao carregar previsão', style: const TextStyle(color: Colors.red)),
+                child: Text(l10n.errorLoadingForecast, style: const TextStyle(color: Colors.red)),
               ),
             ),
 
