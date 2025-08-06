@@ -33,7 +33,7 @@ final class LastWeekNotificationsControllerProvider
 }
 
 String _$lastWeekNotificationsControllerHash() =>
-    r'b58a216c08c869b27cf3e59c0203a82063014114';
+    r'a25773fcd6f4d9cc1f31e1a8ceccad72c934999c';
 
 abstract class _$LastWeekNotificationsController
     extends $AsyncNotifier<List<PrevisaoNotificaoCompleta>> {

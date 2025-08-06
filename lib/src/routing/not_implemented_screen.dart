@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/src/common_widgets/empty_placeholder_widget.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/src/common_widgets/empty_placeholder_widget.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 /// Simple not implemented screen used for unimplemented routes
 class NotImplementedScreen extends StatelessWidget {

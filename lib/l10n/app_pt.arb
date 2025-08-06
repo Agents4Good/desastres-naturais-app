@@ -1,6 +1,6 @@
 {
     "@@locale": "pt",
-    "appTitle": "Águas da Borborema",
+    "appTitle": "PluvIA",
     
     "navHome": "Home",
     "navChat": "Chat",
@@ -33,13 +33,13 @@
     "imageSupportEnabled": "Suporte a imagem ativado",
     "loadingModel": "Carregando o modelo",
     "imageSupportInfoTitle": "O modelo suporta imagens",
-    "imageSupportInfoBody": "Uso o botão 📷 para enviar imagens",
+    "imageSupportInfoBody": "Uso o botão 🖼️ para enviar imagens",
     "errorBannerMessage": "{errorMessage}",
     
     "buttonToggleView": "Alternar visualização",
     "@buttonToggleView": { "description": "Texto do botão para alternar layout da home" },
     
-    "homeWelcomeTitle": "Bem-vindo ao Águas da Borborema",
+    "homeWelcomeTitle": "Bem-vindo ao PluvIA",
     "@homeWelcomeTitle": { "description": "Título de boas-vindas na HomeScreen" },
     
     "homeWelcomeSubtitle": "Explore nossa solução de assistência à eventos de catástrofes naturais",

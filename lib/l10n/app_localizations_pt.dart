@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'Águas da Borborema';
+  String get appTitle => 'PluvIA';
 
   @override
   String get navHome => 'Home';
@@ -55,6 +55,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String executionDate(Object date) {
     return 'Data de execução\n$date';
   }
+
+  @override
+  String get dateFormatUpToDay => 'dd/MM/y';
+
+  @override
+  String get dateFormatFull => 'dd/MM/yyyy HH:mm:ss';
 
   @override
   String notificationsError(Object error) {
@@ -156,7 +162,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get imageSupportInfoTitle => 'O modelo suporta imagens';
 
   @override
-  String get imageSupportInfoBody => 'Uso o botão 📷 para enviar imagens';
+  String get imageSupportInfoBody => 'Uso o botão 🖼️ para enviar imagens';
 
   @override
   String errorBannerMessage(Object errorMessage) {
@@ -167,7 +173,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get buttonToggleView => 'Alternar visualização';
 
   @override
-  String get homeWelcomeTitle => 'Bem-vindo ao Águas da Borborema';
+  String get homeWelcomeTitle => 'Bem-vindo ao PluvIA';
 
   @override
   String get homeWelcomeSubtitle => 'Explore nossa solução de assistência à eventos de catástrofes naturais';
@@ -180,6 +186,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get homeForecastSubtitle => 'Cheque as últimas previsões!';
+
+  @override
+  String get errorLoadingForecast => 'Erro ao carregar previsões';
 
   @override
   String get homeContactsSubtitle => 'Acesse sua lista de contatos.';
@@ -222,6 +231,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get highlightedFloodPoints => 'Os pontos em destaque sofreram alagamentos!';
+
+  @override
+  String get mapPrevisionDate => 'Data da Previsão';
 
   @override
   String get imageSelectionNotSupportedWeb => 'Seleção de imagem ainda não é suportada na web';

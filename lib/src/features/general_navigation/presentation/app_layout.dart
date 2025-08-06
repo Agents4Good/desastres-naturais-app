@@ -1,4 +1,4 @@
-import 'package:aguas_da_borborema/src/routing/app_router.dart';
+import 'package:pluvia/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -52,7 +52,7 @@ class AppLayout extends ConsumerWidget {
     // List<UnpackedRouteBase> unpackedRoutes = unpackRouteBase(routes);
     return Scaffold(
       // appBar: AppBar(
-      //   title: const Text('Águas da Borborema'),
+      //   title: const Text('PluvIA'),
       //   backgroundColor: const Color(0xFF0b2351),
       // ),
       body: child,

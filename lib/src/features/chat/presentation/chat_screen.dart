@@ -1,16 +1,18 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:aguas_da_borborema/src/features/chat/presentation/chat_widget.dart';
-import 'package:aguas_da_borborema/src/common_widgets/loading_widget.dart';
-import 'package:aguas_da_borborema/src/constants/available_models.dart';
+import 'package:pluvia/src/features/chat/presentation/chat_widget.dart';
+import 'package:pluvia/src/common_widgets/loading_widget.dart';
+import 'package:pluvia/src/constants/available_models.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/src/features/model_management/presentation/select/model_selection_screen.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, this.model = Model.gemma3Gpu_1B});
+  const ChatScreen({super.key, this.model = Model.gemma3nGpu_2B});
 
   final Model model;
 
@@ -75,6 +77,8 @@ class ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final locale = window.locale;
+    final isEn = locale.languageCode == 'en';
 
     return Scaffold(
       backgroundColor: const Color(0xFF0b2351),
@@ -83,13 +87,14 @@ class ChatScreenState extends State<ChatScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute<void>(
-                builder: (_) => const ModelSelectionScreen(),
-              ),
-              (route) => false,
-            );
+            // Navigator.pushAndRemoveUntil(
+            //   context,
+            //   MaterialPageRoute<void>(
+            //     builder: (_) => const ModelSelectionScreen(),
+            //   ),
+            //   (route) => false,
+            // );
+            Navigator.of(context).pop();
           },
         ),
         title: Column(
@@ -128,10 +133,10 @@ class ChatScreenState extends State<ChatScreen> {
       body: Stack(children: [
         Center(
           child: Image.asset(
-            'assets/gota_complexa_new_bg.png',
-            width: 300,
-            height: 300,
-          ),
+                  'assets/logo_bg.png',
+                  width: 250,
+                  height: 250,
+                )
         ),
         _isModelInitialized
             ? Column(children: [

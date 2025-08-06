@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aguas_da_borborema/src/features/forecast/application/forecast_service.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
+import 'package:pluvia/src/features/forecast/application/forecast_service.dart';
+import 'package:pluvia/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'forecast_next_day_controller.g.dart';

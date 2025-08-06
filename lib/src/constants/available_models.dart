@@ -2,7 +2,6 @@ import 'package:flutter_gemma/core/model.dart';
 import 'package:flutter_gemma/pigeon.g.dart';
 
 enum Model {
-
   // Models from JSON - Gemma 3n E2B (Updated version)
   gemma3nGpu_2B(
     url:

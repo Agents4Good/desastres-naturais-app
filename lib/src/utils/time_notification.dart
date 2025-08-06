@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'dart:async';
-import 'package:aguas_da_borborema/src/features/forecast/application/forecast_service.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
-import 'package:aguas_da_borborema/src/services/contacts_service.dart';
+import 'package:pluvia/src/features/forecast/application/forecast_service.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
+import 'package:pluvia/src/services/contacts_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:aguas_da_borborema/src/services/notification.dart';
+import 'package:pluvia/src/services/notification.dart';
 import 'package:flutter_riverpod/legacy.dart'; // Assuming this is your forecast service
 
 
@@ -31,7 +31,7 @@ class TimerService extends StateNotifier<bool> {
   }
 
   void startTimer() {
-    const intervalo = Duration(minutes: 4);
+    const intervalo = Duration(minutes: 3);
     _timer = Timer.periodic(intervalo, (timer) async {
       final locale = window.locale;
       final isEn = locale.languageCode == 'en';
@@ -48,7 +48,15 @@ class TimerService extends StateNotifier<bool> {
         GravidadeAlagamento? risk = contact.alagamentoMaisProximo(previsaoCompleta.previsoes);
         if (risk != null) {
           if (isEn) {
-            contactsString.writeln('The contact \'${contact.name}\' runs a risk of ${risk.name} severity');
+            var riskName = risk.name.toLowerCase();
+            if (riskName == 'alta') {
+              riskName = 'high';
+            } else if (riskName == 'media') {
+              riskName = 'medium';
+            } else if (riskName == 'baixa') {
+              riskName = 'low';
+            }
+            contactsString.writeln('The contact \'${contact.name}\' runs a risk of ${riskName} severity');
           } else {
             contactsString.writeln('O contato \'${contact.name}\' corre o risco de ${risk.name} severidade');
           }
@@ -57,13 +65,22 @@ class TimerService extends StateNotifier<bool> {
 
       // Your logic to check if a notification should be shown
       if (contactsString.isNotEmpty) {
-        // Access the notification service provider to show the notification
-        // final notificationService = _ref.read(notificationServiceProvider);
+        String notificationMessage;
+        String notificationTitle = 'Flood Alert'; // Consistent title
+
         if (isEn) {
-          NotificationService.showNotification('${previsaoCompleta.mensagemAntesEn}\nContacts risk:\n${contactsString.toString()}\n${previsaoCompleta.mensagemDepoisEn}');
+          notificationMessage = '${previsaoCompleta.mensagemAntesEn}\nContacts risk:\n${contactsString.toString()}\n${previsaoCompleta.mensagemDepoisEn}';
+          // notificationPayload = 'EN_FLOOD_ALERT:${contactsString.toString()}';
         } else {
-          NotificationService.showNotification('${previsaoCompleta.mensagemAntesPt}\nRisco dos contatos:\n${contactsString.toString()}\n${previsaoCompleta.mensagemDepoisPt}');
+          notificationMessage = '${previsaoCompleta.mensagemAntesPt}\nRisco dos contatos:\n${contactsString.toString()}\n${previsaoCompleta.mensagemDepoisPt}';
+          // notificationPayload = 'PT_FLOOD_ALERT:${contactsString.toString()}';
         }
+
+        NotificationService.showNotification(
+          notificationMessage,
+          title: notificationTitle, // Pass the title
+          payload: notificationMessage,
+        );
       }
     });
   }

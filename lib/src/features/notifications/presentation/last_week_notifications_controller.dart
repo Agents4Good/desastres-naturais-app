@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:aguas_da_borborema/src/features/forecast/application/forecast_service.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
+import 'package:pluvia/src/features/forecast/application/forecast_service.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
+import 'package:pluvia/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -68,6 +68,7 @@ class LastWeekNotificationsController extends _$LastWeekNotificationsController 
         previsoesIntermediarias[dataExecucaoPrevisao] = [PrevisaoNotificao(dataPrevisao)];
         dataParaIndice[dataPrevisao] = 0;
       } else if (!dataParaIndice.containsKey(dataPrevisao)) {
+        previsoesIntermediarias[dataExecucaoPrevisao]!.add(PrevisaoNotificao(dataPrevisao));
         dataParaIndice[dataPrevisao] = previsoesIntermediarias[dataExecucaoPrevisao]!.length - 1;
       }
     

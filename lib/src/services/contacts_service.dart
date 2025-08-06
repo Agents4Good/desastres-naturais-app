@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

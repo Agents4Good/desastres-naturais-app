@@ -98,7 +98,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Waters of Borborema'**
+  /// **'PluvIA'**
   String get appTitle;
 
   /// No description provided for @navHome.
@@ -178,6 +178,10 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Execution Date\n{date}'**
   String executionDate(Object date);
+
+  String get dateFormatUpToDay;
+
+  String get dateFormatFull;
 
   /// No description provided for @notificationsError.
   ///
@@ -293,7 +297,7 @@ abstract class AppLocalizations {
   /// No description provided for @imageSupportInfoBody.
   ///
   /// In en, this message translates to:
-  /// **'Use the 📷 button to send images'**
+  /// **'Use the 🖼️ button to send images'**
   String get imageSupportInfoBody;
 
   /// No description provided for @errorBannerMessage.
@@ -311,7 +315,7 @@ abstract class AppLocalizations {
   /// Main welcome title on HomeScreen
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Waters of Borborema'**
+  /// **'Welcome to PluvIA'**
   String get homeWelcomeTitle;
 
   /// Subtitle under welcome title on HomeScreen
@@ -337,6 +341,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check out the latest forecasts!'**
   String get homeForecastSubtitle;
+
+  String get errorLoadingForecast;
 
   /// Subtitle for Contacts card
   ///
@@ -421,6 +427,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Highlighted points suffered flooding!'**
   String get highlightedFloodPoints;
+
+  String get mapPrevisionDate;
 
   /// Message shown when user tries to select image on the web version
   ///

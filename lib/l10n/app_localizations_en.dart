@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Waters of Borborema';
+  String get appTitle => 'PluvIA';
 
   @override
   String get navHome => 'Home';
@@ -55,6 +55,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String executionDate(Object date) {
     return 'Execution Date\n$date';
   }
+
+  @override
+  String get dateFormatUpToDay => 'MM/dd/y';
+
+  @override
+  String get dateFormatFull => 'MM/dd/yyyy HH:mm:ss';
 
   @override
   String notificationsError(Object error) {
@@ -150,7 +156,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get imageSupportInfoTitle => 'Model supports images';
 
   @override
-  String get imageSupportInfoBody => 'Use the 📷 button to send images';
+  String get imageSupportInfoBody => 'Use the 🖼️ button to send images';
 
   @override
   String errorBannerMessage(Object errorMessage) {
@@ -161,7 +167,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get buttonToggleView => 'Toggle view';
 
   @override
-  String get homeWelcomeTitle => 'Welcome to Waters of Borborema';
+  String get homeWelcomeTitle => 'Welcome to PluvIA';
 
   @override
   String get homeWelcomeSubtitle => 'Explore our solution for natural disaster assistance';
@@ -174,6 +180,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeForecastSubtitle => 'Check out the latest forecasts!';
+
+  @override
+  String get errorLoadingForecast => 'Error loading forecasts';
 
   @override
   String get homeContactsSubtitle => 'Access your contacts list.';
@@ -223,6 +232,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get highlightedFloodPoints => 'Highlighted points suffered flooding!';
+
+  @override
+  String get mapPrevisionDate => 'Forecast Date';
 
   @override
   String get imageSelectionNotSupportedWeb => 'Image selection is not yet supported on the web';

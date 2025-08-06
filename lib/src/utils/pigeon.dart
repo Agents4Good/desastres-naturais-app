@@ -14,7 +14,7 @@ enum PreferredBackend {
 @ConfigurePigeon(PigeonOptions(
   dartOut: 'lib/src/utils/pigeon.g.dart',
   kotlinOut: 'android/src/main/kotlin/dev/flutterberlin/flutter_gemma/PigeonInterface.g.kt',
-  kotlinOptions: KotlinOptions(package: 'dev.agents4good.aguas_da_borborema'),
+  kotlinOptions: KotlinOptions(package: 'dev.agents4good.pluvia'),
   swiftOut: 'ios/Classes/PigeonInterface.g.swift',
   swiftOptions: SwiftOptions(),
   dartPackageName: 'flutter_gemma',

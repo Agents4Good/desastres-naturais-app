@@ -33,7 +33,7 @@
     "imageSupportEnabled": "Image support enabled",
     "loadingModel": "Loading model",
     "imageSupportInfoTitle": "Model supports images",
-    "imageSupportInfoBody": "Use the 📷 button to send images",
+    "imageSupportInfoBody": "Use the 🖼️ button to send images",
     "errorBannerMessage": "{errorMessage}",
     
     "buttonToggleView": "Toggle view",
