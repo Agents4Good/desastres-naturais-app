@@ -34,6 +34,6 @@
 
 Head over to the **Releases** tab in this repository. There you’ll find the latest `pluvia_vX.Y.Z.apk` ready to download and sideload.
 
-👉 [Releases](https://github.com/Agents4Good/desastres-naturais-app/releases)
+👉 [Releases](https://github.com/Agents4Good/PluvIA/releases)
 
 ---
