@@ -1,7 +1,7 @@
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
-import 'package:aguas_da_borborema/src/constants/available_models.dart';
-import 'package:aguas_da_borborema/src/features/chat/presentation/chat_screen.dart';
-import 'package:aguas_da_borborema/src/services/model_download_service.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
+import 'package:pluvia/src/constants/available_models.dart';
+import 'package:pluvia/src/features/chat/presentation/chat_screen.dart';
+import 'package:pluvia/src/services/model_download_service.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

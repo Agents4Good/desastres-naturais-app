@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'Águas da Borborema';
+  String get appTitle => 'PluvIA';
 
   @override
   String get navHome => 'Home';
@@ -162,7 +162,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get imageSupportInfoTitle => 'O modelo suporta imagens';
 
   @override
-  String get imageSupportInfoBody => 'Uso o botão 📷 para enviar imagens';
+  String get imageSupportInfoBody => 'Uso o botão 🖼️ para enviar imagens';
 
   @override
   String errorBannerMessage(Object errorMessage) {
@@ -173,7 +173,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get buttonToggleView => 'Alternar visualização';
 
   @override
-  String get homeWelcomeTitle => 'Bem-vindo ao Águas da Borborema';
+  String get homeWelcomeTitle => 'Bem-vindo ao PluvIA';
 
   @override
   String get homeWelcomeSubtitle => 'Explore nossa solução de assistência à eventos de catástrofes naturais';
@@ -228,6 +228,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get highlightedFloodPoints => 'Os pontos em destaque sofreram alagamentos!';
+
+  @override
+  String get mapPrevisionDate => 'Data da Previsão';
 
   @override
   String get imageSelectionNotSupportedWeb => 'Seleção de imagem ainda não é suportada na web';

@@ -1,10 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
-import 'package:aguas_da_borborema/src/services/contacts_service.dart';
+import 'package:pluvia/src/features/contacts/address_screen.dart';
+import 'package:pluvia/src/services/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 import '../../services/location_service.dart';
 
@@ -54,7 +54,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                         onTap: () async {
                           final updated = await showDialog<bool>(
                             context: context,
-                            builder: (_) => UpdateContact(contact: c),
+                            builder: (_) => UpdateContact(contact: c, l10n: l10n),
                           );
                           if (updated == true) getContacts();
                         },
@@ -64,7 +64,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                         onTap: () async {
                           final deleted = await showDialog<bool>(
                             context: context,
-                            builder: (_) => DeleteContact(id: c.id!),
+                            builder: (_) => DeleteContact(id: c.id!, l10n: l10n),
                           );
                           if (deleted == true) getContacts();
                         },
@@ -78,7 +78,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
         onPressed: () async {
           final added = await showDialog<bool>(
             context: context,
-            builder: (_) => const AddContact(),
+            builder: (_) => AddContact(l10n: l10n),
           );
           if (added == true) getContacts();
         },
@@ -91,11 +91,11 @@ class _ContactsScreenState extends State<ContactsScreen> {
 
 class DeleteContact extends StatelessWidget {
   final int id;
-  const DeleteContact({super.key, required this.id});
+  final AppLocalizations l10n;
+  const DeleteContact({super.key, required this.id, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
       content: Text(l10n.deleteContactConfirmation),
       actions: [
@@ -106,7 +106,7 @@ class DeleteContact extends StatelessWidget {
         FilledButton(
           onPressed: () async {
             await contactService.delete(id);
-            context.pop(true);
+            Navigator.of(context).pop(true);
           },
           child: Text(l10n.modelDelete),
         ),
@@ -117,7 +117,8 @@ class DeleteContact extends StatelessWidget {
 
 class UpdateContact extends StatefulWidget {
   final Contact contact;
-  const UpdateContact({super.key, required this.contact});
+  final AppLocalizations l10n; 
+  const UpdateContact({super.key, required this.contact, required this.l10n});
 
   @override
   State<UpdateContact> createState() => _UpdateContactState();
@@ -135,7 +136,7 @@ class _UpdateContactState extends State<UpdateContact> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = widget.l10n;
     final nameController = TextEditingController(text: contact.name);
     final addressController = TextEditingController(text: contact.address);
 
@@ -157,7 +158,7 @@ class _UpdateContactState extends State<UpdateContact> {
       ),
       actions: [
         TextButton(
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.of(context).pop(),
           child: Text(l10n.buttonCancel),
         ),
         FilledButton(
@@ -165,7 +166,7 @@ class _UpdateContactState extends State<UpdateContact> {
             setState(() => loading = true);
             await contactService.update(contact);
             setState(() => loading = false);
-            context.pop(true);
+            Navigator.of(context).pop(true);
           },
           child: Text(l10n.buttonSave),
         ),
@@ -175,7 +176,8 @@ class _UpdateContactState extends State<UpdateContact> {
 }
 
 class AddContact extends StatefulWidget {
-  const AddContact({super.key});
+  final AppLocalizations l10n;
+  const AddContact({super.key, required this.l10n});
 
   @override
   State<AddContact> createState() => _AddContactState();
@@ -189,7 +191,7 @@ class _AddContactState extends State<AddContact> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = widget.l10n;
     return AlertDialog(
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -215,7 +217,7 @@ class _AddContactState extends State<AddContact> {
       ),
       actions: [
         TextButton(
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.of(context).pop(),
           child: Text(l10n.buttonCancel),
         ),
         FilledButton(
@@ -229,7 +231,7 @@ class _AddContactState extends State<AddContact> {
             );
             await contactService.insert(c);
             setState(() => loading = false);
-            context.pop(true);
+            Navigator.of(context).pop(true);
           },
           child: Text(l10n.buttonSave),
         ),

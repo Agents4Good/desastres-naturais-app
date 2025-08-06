@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:aguas_da_borborema/src/features/language/language_controller.dart';
-import 'package:aguas_da_borborema/src/routing/app_router.dart';
+import 'package:pluvia/src/features/language/language_controller.dart';
+import 'package:pluvia/src/routing/app_router.dart';
 import 'package:go_router/go_router.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -36,10 +36,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 12),
-                const Icon(
-                  Icons.chat_bubble_outline,
-                  size: 80,
-                  color: Colors.white,
+                // const Icon(
+                //   Icons.chat_bubble_outline,
+                //   size: 80,
+                //   color: Colors.white,
+                // ),
+                Image.asset(
+                  'assets/white_logo_bg.png',
+                  width: 80,
+                  height: 80,
                 ),
                 const SizedBox(height: 32),
                 Text(

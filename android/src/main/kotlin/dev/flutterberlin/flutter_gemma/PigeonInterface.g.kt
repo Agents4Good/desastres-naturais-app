@@ -2,7 +2,7 @@
 // See also: https://pub.dev/packages/pigeon
 @file:Suppress("UNCHECKED_CAST", "ArrayInDataClass")
 
-package dev.agents4good.aguas_da_borborema
+package dev.agents4good.pluvia
 
 import android.util.Log
 import io.flutter.plugin.common.BasicMessageChannel

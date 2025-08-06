@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:aguas_da_borborema/src/features/chat/presentation/chat_message.dart';
+import 'package:pluvia/src/features/chat/presentation/chat_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/core/chat.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
-import 'package:aguas_da_borborema/src/services/gemma_service.dart';
+import 'package:pluvia/src/services/gemma_service.dart';
 
 class GemmaInputField extends StatefulWidget {
   const GemmaInputField({
@@ -52,7 +52,8 @@ class GemmaInputFieldState extends State<GemmaInputField> {
 
     final messageWithContext = Message(
           isUser: originalMessage.isUser,
-          text: messageText.toString());
+          text: messageText.toString(),
+          imageBytes: originalMessage.imageBytes);
     
     _subscription = _gemma?.processMessageAsync(messageWithContext).listen(
       (String token) {

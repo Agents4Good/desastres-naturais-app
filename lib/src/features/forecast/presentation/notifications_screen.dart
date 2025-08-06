@@ -1,8 +1,8 @@
-import 'package:aguas_da_borborema/src/features/notifications/presentation/last_week_notifications_controller.dart';
+import 'package:pluvia/src/features/notifications/presentation/last_week_notifications_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 class NotificacoesScreen extends ConsumerWidget {
   const NotificacoesScreen({super.key});
@@ -72,8 +72,7 @@ class NotificacoesScreen extends ConsumerWidget {
           itemCount: previsoes.length,
           itemBuilder: (context, index) {
             final previsao = previsoes[index];
-            final execDate = DateFormat("dd/MM/yyyy HH:mm:ss")
-                .format(previsao.dataExecucaoPrevisao);
+            final execDate = DateFormat(l10n.dateFormatUpToDay).format(previsao.dataExecucaoPrevisao);
             return ExpansionTile(
               title: Text(
                 l10n.executionDate(execDate),

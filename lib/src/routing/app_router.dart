@@ -1,19 +1,19 @@
 import 'dart:core';
 
-import 'package:aguas_da_borborema/src/features/contacts/address_screen.dart';
-import 'package:aguas_da_borborema/src/features/general_navigation/presentation/app_layout.dart';
-import 'package:aguas_da_borborema/src/features/general_navigation/presentation/home.dart';
-import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
-import 'package:aguas_da_borborema/src/features/contacts/contacts_screen.dart';
-import 'package:aguas_da_borborema/src/features/map/presentation/map_screen.dart';
-import 'package:aguas_da_borborema/src/features/model_management/presentation/select/model_selection_screen.dart';
-import 'package:aguas_da_borborema/src/routing/not_found_screen.dart';
-import 'package:aguas_da_borborema/src/routing/not_implemented_screen.dart';
-import 'package:aguas_da_borborema/src/features/forecast/presentation/notifications_screen.dart';
+import 'package:pluvia/src/features/contacts/address_screen.dart';
+import 'package:pluvia/src/features/general_navigation/presentation/app_layout.dart';
+import 'package:pluvia/src/features/general_navigation/presentation/home.dart';
+import 'package:pluvia/src/features/model_management/presentation/select/model_selection_screen.dart';
+import 'package:pluvia/src/features/contacts/contacts_screen.dart';
+import 'package:pluvia/src/features/map/presentation/map_screen.dart';
+import 'package:pluvia/src/features/model_management/presentation/select/model_selection_screen.dart';
+import 'package:pluvia/src/routing/not_found_screen.dart';
+import 'package:pluvia/src/routing/not_implemented_screen.dart';
+import 'package:pluvia/src/features/forecast/presentation/notifications_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
 
 part 'app_router.g.dart';
 

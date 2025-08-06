@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:image_picker/image_picker.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 class ChatInputField extends StatefulWidget {
   final ValueChanged<Message> handleSubmitted;

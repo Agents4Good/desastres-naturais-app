@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_full_forecast.dart';
+import 'package:pluvia/src/features/forecast/domain/model_full_forecast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:path_provider/path_provider.dart';

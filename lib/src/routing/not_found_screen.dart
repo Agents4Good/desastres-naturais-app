@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/src/common_widgets/empty_placeholder_widget.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/src/common_widgets/empty_placeholder_widget.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 
 /// Tela exibida quando a rota não é encontrada (404)
 class NotFoundScreen extends StatelessWidget {

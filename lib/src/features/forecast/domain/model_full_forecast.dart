@@ -1,4 +1,4 @@
-import 'package:aguas_da_borborema/src/features/forecast/domain/model_forecast.dart';
+import 'package:pluvia/src/features/forecast/domain/model_forecast.dart';
 
 class PrevisaoAlagamentoCompleta {
   final List<PrevisaoAlagamento> previsoes;

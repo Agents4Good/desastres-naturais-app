@@ -1,6 +1,6 @@
-import 'package:aguas_da_borborema/src/routing/app_router.dart';
+import 'package:pluvia/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:aguas_da_borborema/src/common_widgets/primary_button.dart';
+import 'package:pluvia/src/common_widgets/primary_button.dart';
 import 'package:go_router/go_router.dart';
 
 /// Placeholder widget showing a message and CTA to go back to the home screen.

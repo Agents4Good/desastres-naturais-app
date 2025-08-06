@@ -1,9 +1,9 @@
-import 'package:aguas_da_borborema/src/routing/app_router.dart';
+import 'package:pluvia/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
-import 'package:aguas_da_borborema/src/features/language/language_controller.dart'; // ajuste o caminho
+import 'package:pluvia/l10n/app_localizations.dart';
+import 'package:pluvia/src/features/language/language_controller.dart'; // ajuste o caminho
 
 class ChatApp extends ConsumerWidget {
   const ChatApp({super.key});

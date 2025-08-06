@@ -1,10 +1,10 @@
-import 'package:aguas_da_borborema/l10n/app_localizations.dart';
+import 'package:pluvia/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemma/pigeon.g.dart';
-import 'package:aguas_da_borborema/src/features/chat/presentation/chat_screen.dart';
-import 'package:aguas_da_borborema/src/features/model_management/presentation/download/model_download_screen.dart';
-import 'package:aguas_da_borborema/src/constants/available_models.dart';
+import 'package:pluvia/src/features/chat/presentation/chat_screen.dart';
+import 'package:pluvia/src/features/model_management/presentation/download/model_download_screen.dart';
+import 'package:pluvia/src/constants/available_models.dart';
 import 'dart:io' as io;
 
 class ModelSelectionScreen extends StatelessWidget {

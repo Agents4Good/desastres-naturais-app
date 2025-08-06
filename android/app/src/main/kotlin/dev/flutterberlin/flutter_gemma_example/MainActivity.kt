@@ -1,4 +1,4 @@
-package dev.agents4good.aguas_da_borborema
+package dev.agents4good.pluvia
 
 import io.flutter.embedding.android.FlutterActivity
 

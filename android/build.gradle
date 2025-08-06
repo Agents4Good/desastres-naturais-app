@@ -2,6 +2,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+
+        // Add this repository for MediaPipe
+        maven { url "https://jcenter.bintray.com" }
     }
 }
 
